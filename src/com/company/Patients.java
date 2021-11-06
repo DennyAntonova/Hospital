@@ -50,7 +50,7 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "doctor_id='" + patient_id + '\'' +
+                "patient_id='" + patient_id + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", age='" + age + '\'' +
