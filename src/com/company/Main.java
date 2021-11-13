@@ -18,6 +18,27 @@ public class Main {
         if (choice == 1) {
             String doctors = "D:\\DigitalMontana\\Hospital-master\\src\\com\\company\\doctors.csv";
             login((ArrayList<String>) read(doctors));
+             System.out.println("Menu:");
+            System.out.println("1. Reversed hours.");
+            System.out.println("2. Sort reversed hours");
+            int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
+            if (selectionFromTheMainMenu == 1) {
+
+            } else if (selectionFromTheMainMenu == 2) {
+                System.out.println("Select an option from the following menu");
+                System.out.println("1. Sort by patient name in ascending order");
+                System.out.println("2. Sort by patient name in descending order");
+                System.out.println("3. Sorting by appointment for examination of patients in ascending order");
+                System.out.println("4. Sorting by appointment for examination of patients in descending order");
+                System.out.println("5. Sorting by patients ID");
+                int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
+                if (selectionFromSortReversedHours == 1) {
+                } else if (selectionFromSortReversedHours == 2) {
+                } else if (selectionFromSortReversedHours == 3) {
+                }else if (selectionFromSortReversedHours == 4) {
+                }else if (selectionFromSortReversedHours == 5) {
+                }
+            }
         } else if (choice == 2) {
             String patients = "D:\\DigitalMontana\\Hospital-master\\src\\com\\company\\patients.csv";
             login((ArrayList<String>) read(patients));
