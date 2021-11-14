@@ -42,6 +42,16 @@ public class Main {
         } else if (choice == 2) {
             String patients = "D:\\DigitalMontana\\Hospital-master\\src\\com\\company\\patients.csv";
             login((ArrayList<String>) read(patients));
+            System.out.println("Menu:");
+            System.out.println("1. Reversed hours.");
+            System.out.println("2. Change date / time of an appointment.");
+            System.out.println("3. Cancellation of an appointment.");
+            int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
+            if (selectionFromTheMainMenu == 1) {
+
+            } else if (selectionFromTheMainMenu == 2) {
+            } else if (selectionFromTheMainMenu == 3) {
+            }
         }
     }
 
