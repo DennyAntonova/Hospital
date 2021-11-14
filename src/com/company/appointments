@@ -1,4 +1,3 @@
-appointment_id,patient_id,type_of_examination,date,time,doctor_id
 1,1,initial,28-06-2021,1000,2
 2,4,secondary,21-06-2021,1230,8
 3,7,consultation,15-06-2021,1030,2
