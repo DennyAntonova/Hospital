@@ -1,20 +1,19 @@
 package com.company;
 
 public class Patient {
-    private static int next_patient_id = 1;
-    private int patient_id;
+       private String patient_id;
     private String first_name;
     private String last_name;
-    private int age;
+    private String age;
 
-    public Patient(int patient_id, String first_name, String last_name, int age) {
-        patient_id = next_patient_id++;
+    public Patient(String patient_id, String first_name, String last_name, String age) {
+        this.patient_id = patient_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.age = age;
     }
 
-    public int getPatient_id() {
+    public String getPatient_id() {
         return patient_id;
     }
 
@@ -26,13 +25,10 @@ public class Patient {
         return last_name;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setPatient_id(int patient_id) {
-        this.patient_id = patient_id;
-    }
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
@@ -43,7 +39,7 @@ public class Patient {
     }
 
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
