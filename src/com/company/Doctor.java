@@ -1,57 +1,29 @@
 package com.company;
 
-public class Doctor {
-    public String getDoctor_id() {
-        return doctor_id;
-    }
+public class Doctor extends User {
 
-    public void setDoctor_id(String doctor_id) {
-        this.doctor_id = doctor_id;
-    }
+    private HospitalSpecialties speciality;
 
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public String getSpeciality() {
+    public HospitalSpecialties getSpeciality() {
         return speciality;
     }
 
-    public void setSpeciality(String speciality) {
+    public void setSpeciality(HospitalSpecialties speciality) {
         this.speciality = speciality;
     }
 
-    private String doctor_id;
-    private String first_name;
-    private String last_name;
-    private String speciality;
-
-    public Doctor(String doctor_id, String first_name, String last_name, String speciality) {
-        this.doctor_id = doctor_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public Doctor(int id, String firstName, String secondName, HospitalSpecialties speciality) {
+        super(id, firstName, secondName);
         this.speciality = speciality;
     }
 
     @Override
     public String toString() {
         return "Doctor{" +
-                "doctor_id='" + doctor_id + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", speciality='" + speciality + '\'' +
+                "id=" + super.getId() +
+                ", firstName='" + super.getFirstName() + '\'' +
+                ", secondName='" + super.getSecondName() + '\'' +
+                "speciality=" + speciality +
                 '}';
     }
 }
