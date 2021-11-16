@@ -8,8 +8,8 @@ public class Appointment {
     private String time;
     Examination examination;
 
-    public Appointment(int appointment_id,Date date,int patientID,int doctorID,String time,Examination examination){
-    this.appointmentID=appointment_id;
+    public Appointment(int appointmentID,Date date,int patientID,int doctorID,String time,Examination examination){
+    this.appointmentID=appointmentID;
     this.date=date;
     this.patientID=patientID;
     this.doctorID=doctorID;
