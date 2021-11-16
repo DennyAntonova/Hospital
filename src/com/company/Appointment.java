@@ -1,58 +1,52 @@
 package com.company;
 
 public class Appointment {
-
-    private final String appointment_id;
-    private String date;
-    private String patient_id;
-    private String doctor_id;
+    private int appointmentID;
+    private Date date;
+    private int patientID;
+    private int doctorID;
     private String time;
-    String examination;
+    Examination examination;
 
-
-    public Appointment(String appointment_id, String date, String patient_id, String doctor_id, String time, String examination) {
-        this.appointment_id = appointment_id;
-        this.date = date;
-        this.patient_id = patient_id;
-        this.doctor_id = doctor_id;
-        this.time = time;
-        this.examination = examination;
+    public Appointment(int appointment_id,Date date,int patientID,int doctorID,String time,Examination examination){
+    this.appointmentID=appointment_id;
+    this.date=date;
+    this.patientID=patientID;
+    this.doctorID=doctorID;
+    this.time=time;
+    this.examination=examination;
     }
 
-    public String getAppointment_id() {
-        return appointment_id;
+    public int getAppointmentID() {
+        return appointmentID;
     }
 
-    public String getDate() {
+    public void setAppointmentID(int appointmentID) {
+        this.appointmentID = appointmentID;
+    }
+
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-
-    public String getDoctor_id() {
-        return doctor_id;
+    public int getDoctorID() {
+        return doctorID;
     }
 
-
-    public void setDoctor_id(String doctor_id) {
-        this.doctor_id = doctor_id;
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
     }
 
-
-    public String getPatient_id() {
-        return patient_id;
+    public int getPatientID() {
+        return patientID;
     }
 
-
-    public void setPatient_id(String patient_id) {
-        this.patient_id = patient_id;
-    }
-
-    public String getExamination() {
-        return examination;
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
     }
 
     public String getTime() {
@@ -63,15 +57,23 @@ public class Appointment {
         this.time = time;
     }
 
+    public Examination getExamination() {
+        return examination;
+    }
+
+    public void setExamination(Examination examination) {
+        this.examination = examination;
+    }
+
     @Override
     public String toString() {
         return "Appointment{" +
-                "appointment_id='" + appointment_id + '\'' +
-                ", date='" + date + '\'' +
-                ", patient_id='" + patient_id + '\'' +
-                ", doctor_id='" + doctor_id + '\'' +
+                "appointmentID=" + appointmentID +
+                ", date=" + date +
+                ", patientID=" + patientID +
+                ", doctorID=" + doctorID +
                 ", time='" + time + '\'' +
-                ", examination='" + examination + '\'' +
+                ", examination=" + examination +
                 '}';
     }
 }
