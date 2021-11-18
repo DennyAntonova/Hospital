@@ -1,8 +1,11 @@
 package com.company;
+import java.time.format.DateTimeFormatter;
+
 
 import java.time.format.DateTimeFormatter;
 
 public class Appointment {
+
     private int appointmentID;
     private int patientID;
     private TypeOfExaminations examination;
@@ -10,13 +13,6 @@ public class Appointment {
     private DateTimeFormatter time;
     private int doctorID;
 
-    public int getAppointmentID() {
-        return appointmentID;
-    }
-
-    public void setAppointmentID(int appointmentID) {
-        this.appointmentID = appointmentID;
-    }
 
     public int getPatientID() {
         return patientID;
@@ -66,17 +62,23 @@ public class Appointment {
         this.date = date;
         this.time = time;
         this.doctorID = doctorID;
+
+   
     }
+
 
     @Override
     public String toString() {
         return "Appointment{" +
+
                 "appointmentID=" + appointmentID +
                 ", patientID=" + patientID +
                 ", examination=" + examination +
                 ", date=" + date +
                 ", time=" + time +
                 ", doctorID=" + doctorID +
-                '}';
+
+                             '}';
     }
 }
+
