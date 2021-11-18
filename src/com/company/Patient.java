@@ -6,6 +6,7 @@ public class Patient extends User {
 
     private int age;
 
+
     public int getAge() {
         return age;
     }
