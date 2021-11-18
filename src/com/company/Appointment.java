@@ -12,7 +12,6 @@ public class Appointment {
     private DateTimeFormatter time;
     private final int idDoctor;
 
-
     public int getAppointment_id() {
         return appointment_id;
     }
