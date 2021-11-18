@@ -47,17 +47,9 @@ public class Patient extends User {
             for (int i = 0; i < appointments.size(); i++) {
                 if (Objects.equals(appointments.get(i).getPatient_id(), idReversedHours)) {
                     System.out.println(appointments.get(i));
-                    // ArrayList<Appointment> reversedHourForPatient = new ArrayList<>();
-                    //reversedHourForPatient.add(appointments.get(i));
-                    //System.out.println(reversedHourForPatient);
-                    // for (int j = 0; j < reversedHourForPatient.size(); j++) {
-                    //  Arrays.sort(reversedHourForDoctor, new Doctor());
-                    //     System.out.println(Arrays.toString(new ArrayList[]{reversedHourForPatient}));
-
                 }
-
             }
-            // }
+
         } else if (choiceIdPatient == 2) {
             int idReversedHours = Integer.parseInt(userId());
             for (int i = 0; i < appointments.size(); i++) {
@@ -73,6 +65,7 @@ public class Patient extends User {
             }
         }
     }
+
     public static void cancelAppointment() {
 
     }
