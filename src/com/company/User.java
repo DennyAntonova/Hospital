@@ -1,5 +1,13 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+import static com.company.Doctor.userId;
+
 public class User {
     private int id;
     private String firstName;
@@ -42,5 +50,31 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 '}';
+    }
+    public static void login(ArrayList<User> userList) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter user_ID");
+
+        String userId = (userId());
+        System.out.println("Please enter your first name");
+        String name = scanner.nextLine();
+        System.out.println("Please enter your second name");
+        String secondName = scanner.nextLine();
+        boolean isContain = false;
+        List<String> strings = userList.stream()
+                .map(object -> Objects.toString(object, null))
+                .collect(Collectors.toList());
+        for (String user : strings) {
+            if (user.contains(name) && user.contains(secondName) && (user.contains(userId))) {
+                System.out.printf("Welcome, %s %s!", name, secondName);
+                System.out.println();
+                isContain = true;
+                break;
+            }
+        }
+        if (!isContain) {
+            System.out.println("Wrong ID or Name. Please enter again!");
+            login(userList);
+        }
     }
 }

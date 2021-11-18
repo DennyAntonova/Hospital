@@ -3,7 +3,7 @@ package com.company;
 public class Patient extends User{
   private int age;
 
-    public Patient(int id, String firstName, String secondName, int age) throws FileNotFoundException {
+    public Patient(int id, String firstName, String secondName, int age) {
         super(id,firstName,secondName);
         this.age = age;
     }

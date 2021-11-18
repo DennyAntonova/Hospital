@@ -1,21 +1,14 @@
 package com.company;
 
+import java.time.format.DateTimeFormatter;
+
 public class Appointment {
     private int appointmentID;
-    private Date date;
     private int patientID;
+    private TypeOfExaminations examination;
+    private DateTimeFormatter date;
+    private DateTimeFormatter time;
     private int doctorID;
-    private String time;
-    Examination examination;
-
-    public Appointment(int appointmentID,Date date,int patientID,int doctorID,String time,Examination examination){
-    this.appointmentID=appointmentID;
-    this.date=date;
-    this.patientID=patientID;
-    this.doctorID=doctorID;
-    this.time=time;
-    this.examination=examination;
-    }
 
     public int getAppointmentID() {
         return appointmentID;
@@ -23,22 +16,6 @@ public class Appointment {
 
     public void setAppointmentID(int appointmentID) {
         this.appointmentID = appointmentID;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getDoctorID() {
-        return doctorID;
-    }
-
-    public void setDoctorID(int doctorID) {
-        this.doctorID = doctorID;
     }
 
     public int getPatientID() {
@@ -49,31 +26,57 @@ public class Appointment {
         this.patientID = patientID;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public Examination getExamination() {
+    public TypeOfExaminations getExamination() {
         return examination;
     }
 
-    public void setExamination(Examination examination) {
+    public void setExamination(TypeOfExaminations examination) {
         this.examination = examination;
+    }
+
+    public DateTimeFormatter getDate() {
+        return date;
+    }
+
+    public void setDate(DateTimeFormatter date) {
+        this.date = date;
+    }
+
+    public DateTimeFormatter getTime() {
+        return time;
+    }
+
+    public void setTime(DateTimeFormatter time) {
+        this.time = time;
+    }
+
+    public int getDoctorID() {
+        return doctorID;
+    }
+
+    public void setDoctorID(int doctorID) {
+        this.doctorID = doctorID;
+    }
+
+    public Appointment(int appointmentID, int patientID, TypeOfExaminations examination,
+                       DateTimeFormatter date, DateTimeFormatter time, int doctorID) {
+        this.appointmentID = appointmentID;
+        this.patientID = patientID;
+        this.examination = examination;
+        this.date = date;
+        this.time = time;
+        this.doctorID = doctorID;
     }
 
     @Override
     public String toString() {
         return "Appointment{" +
                 "appointmentID=" + appointmentID +
-                ", date=" + date +
                 ", patientID=" + patientID +
-                ", doctorID=" + doctorID +
-                ", time='" + time + '\'' +
                 ", examination=" + examination +
+                ", date=" + date +
+                ", time=" + time +
+                ", doctorID=" + doctorID +
                 '}';
     }
 }
