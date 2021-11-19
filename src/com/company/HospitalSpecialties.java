@@ -1,19 +1,21 @@
 package com.company;
 
 public enum HospitalSpecialties {
-    ANESTHESIOLOGY,
-    INTERNAL_DISEASES,
-    GASTROENTEROLOGY,
-    ENDOCRINOLOGY,
-    CARDIOLOGY,
-    DERMATOLOGY,
-    NEUROLOGY,
-    NEPHROLOGY,
-    PSYCHIATRY,
-    RHEUMATOLOGY,
-    GYNECOLOGY,
-    ORTHOPEDICS,
-    OPHTHALMOLOGY,
-    UROLOGY,
-    SURGERY;
-}
+        ANESTHESIOLOGY,
+        CARDIOLOGY,
+        DERMATOLOGY,
+        ENDOCRINOLOGY,
+        GASTROENTEROLOGY,
+        GYNECOLOGY,
+        INTERNAL_DISEASES,
+        NEPHROLOGY,
+        NEUROLOGY,
+        OPHTHALMOLOGY,
+        PSYCHIATRY,
+        ORTHOPEDICS,
+        RHEUMATOLOGY,
+        SURGERY,
+        UROLOGY
+      }
+
+

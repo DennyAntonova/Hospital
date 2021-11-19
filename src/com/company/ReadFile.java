@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.EnumMap;
 
 import static com.sun.tools.javac.util.StringUtils.toUpperCase;
 
@@ -34,11 +35,9 @@ public class ReadFile {
         int id = Integer.parseInt(metadata[0]);
         String firstName = metadata[1];
         String secondName = metadata[2];
-        String specialties = metadata[3];
+        HospitalSpecialties specialties =HospitalSpecialties.valueOf(metadata[3].toUpperCase());
         return new Doctor(id, firstName, secondName, specialties);
     }
-
-    ArrayList<User> doctors = readDoctorsFromCSV("D:\\CheckHomework\\Hospital-master\\src\\com\\company\\doctors");
 
     public static ArrayList<User> readPatientsFromCSV(String fileName) {
         ArrayList<User> patients = new ArrayList<>();
@@ -87,7 +86,7 @@ public class ReadFile {
     public static Appointment createAppointments(String[] metadata) {
         int idAppointment = Integer.parseInt(metadata[0]);
         int idPatient = Integer.parseInt(metadata[1]);
-        TypeOfExaminations typeOfExamination = TypeOfExaminations.valueOf(toUpperCase(metadata[2]));
+        TypeOfExaminations typeOfExamination = TypeOfExaminations.valueOf(metadata[2].toUpperCase());
         DateTimeFormatter date = DateTimeFormatter.ofPattern(metadata[3]);
         DateTimeFormatter time = DateTimeFormatter.ofPattern(metadata[4]);
         int idDoctor = Integer.parseInt(metadata[5]);
