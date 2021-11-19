@@ -7,7 +7,6 @@ public enum HospitalSpecialties {
         ENDOCRINOLOGY,
         GASTROENTEROLOGY,
         GYNECOLOGY,
-        INTERNAL_DISEASES,
         NEPHROLOGY,
         NEUROLOGY,
         OPHTHALMOLOGY,
