@@ -6,6 +6,7 @@ public enum HospitalSpecialties {
         DERMATOLOGY,
         ENDOCRINOLOGY,
         GASTROENTEROLOGY,
+        INYERNAL_DESEASES,
         GYNECOLOGY,
         NEPHROLOGY,
         NEUROLOGY,

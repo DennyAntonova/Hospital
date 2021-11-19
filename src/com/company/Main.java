@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<User> doctors = readDoctorsFromCSV("D:\\CheckHomework\\Hospital-master\\src\\com\\company\\doctors");
+        ArrayList<User> doctors = readDoctorsFromCSV("D:\\DigitalMontana\\OOP\\Hospital\\src\\com\\company\\doctors");
         ArrayList<Appointment> appointments = readAppointmentsFromCSV("D:\\CheckHomework\\Hospital-master\\src\\com\\company\\appointments");
         ArrayList<User> patients = readPatientsFromCSV("D:\\CheckHomework\\Hospital-master\\src\\com\\company\\patients");
 
