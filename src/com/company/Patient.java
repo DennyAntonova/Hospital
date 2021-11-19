@@ -1,7 +1,5 @@
 package com.company;
 
-
-
 import java.util.*;
 
 public class Patient extends User {
@@ -47,7 +45,7 @@ public class Patient extends User {
             System.out.println("Choice Id Patient");
             int idReversedHours = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatient_id(), idReversedHours)) {
+                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
                     System.out.println(appointments.get(i));
                     // ArrayList<Appointment> reversedHourForPatient = new ArrayList<>();
                     //reversedHourForPatient.add(appointments.get(i));
@@ -63,14 +61,14 @@ public class Patient extends User {
         } else if (choiceIdPatient == 2) {
             int idReversedHours = Integer.parseInt(userId());
             for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatient_id(), idReversedHours)) {
+                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
                     System.out.println(appointments.get(i));
                 }
             }
         } else {
             String idReversedHours = userId();
             for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatient_id(), idReversedHours)) {
+                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
                 }
             }
         }

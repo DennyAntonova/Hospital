@@ -4,13 +4,13 @@ import java.util.*;
 
 public class Doctor extends User {
 
-    private String speciality;
+    private HospitalSpecialties speciality;
 
-    public String getSpeciality() {
+    public HospitalSpecialties getSpeciality() {
         return speciality;
     }
 
-    public void setSpeciality(String speciality) {
+    public void setSpeciality(HospitalSpecialties speciality) {
 
         this.speciality = speciality;
     }
@@ -25,7 +25,7 @@ public class Doctor extends User {
                 '}';
     }
 
-    public Doctor(int id, String firstName, String secondName, String speciality) {
+    public Doctor(int id, String firstName, String secondName, HospitalSpecialties speciality) {
         super(id, firstName, secondName);
         this.speciality = speciality;
 

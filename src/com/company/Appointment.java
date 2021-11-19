@@ -1,12 +1,9 @@
 package com.company;
 import java.time.format.DateTimeFormatter;
 
-
-import java.time.format.DateTimeFormatter;
-
 public class Appointment {
 
-    private int appointmentID;
+    private int appointmentId;
     private int patientID;
     private TypeOfExaminations examination;
     private DateTimeFormatter date;
@@ -56,22 +53,20 @@ public class Appointment {
 
     public Appointment(int appointmentID, int patientID, TypeOfExaminations examination,
                        DateTimeFormatter date, DateTimeFormatter time, int doctorID) {
-        this.appointmentID = appointmentID;
+        this.appointmentId = appointmentID;
         this.patientID = patientID;
         this.examination = examination;
         this.date = date;
         this.time = time;
         this.doctorID = doctorID;
 
-   
     }
-
 
     @Override
     public String toString() {
         return "Appointment{" +
 
-                "appointmentID=" + appointmentID +
+                "appointmentID=" + appointmentId +
                 ", patientID=" + patientID +
                 ", examination=" + examination +
                 ", date=" + date +
