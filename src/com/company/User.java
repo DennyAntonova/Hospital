@@ -51,15 +51,7 @@ public class User {
                 ", secondName='" + secondName + '\'' +
                 '}';
     }
-    public static void login(ArrayList<User> userList) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter user_ID");
-
-        String userId = (userId());
-        System.out.println("Please enter your first name");
-        String name = scanner.nextLine();
-        System.out.println("Please enter your second name");
-        String secondName = scanner.nextLine();
+    public static void login(ArrayList<User> userList,String userId,String name,String secondName) {
         boolean isContain = false;
         List<String> strings = userList.stream()
                 .map(object -> Objects.toString(object, null))
@@ -74,7 +66,7 @@ public class User {
         }
         if (!isContain) {
             System.out.println("Wrong ID or Name. Please enter again!");
-            login(userList);
+            login(userList,userId,name,secondName);
         }
     }
 }

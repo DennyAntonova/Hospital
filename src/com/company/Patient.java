@@ -6,7 +6,6 @@ public class Patient extends User {
 
     private int age;
 
-
     public int getAge() {
         return age;
     }
@@ -30,43 +29,25 @@ public class Patient extends User {
                 '}';
     }
 
-    public static String userId() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
-    }
+    public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
 
-    public static void reversedHours(ArrayList<Appointment> appointments) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("For reference saved patients custom hours, press 1");
-        System.out.println("For reference by id entered the system, press 2");
-        int choiceIdPatient = Integer.parseInt(scanner.nextLine());
-
-        if (choiceIdPatient == 1) {
-            System.out.println("Choice Id Patient");
-            int idReversedHours = Integer.parseInt(scanner.nextLine());
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
-                    System.out.println(appointments.get(i));
-                }
-            }
-
-        } else if (choiceIdPatient == 2) {
-            int idReversedHours = Integer.parseInt(userId());
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
-                    System.out.println(appointments.get(i));
-                }
-            }
-        } else {
-            String idReversedHours = userId();
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
-                }
+        int idReversedHours = Integer.parseInt(userId);
+        for (int i = 0; i < appointments.size(); i++) {
+            if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
+                System.out.println(appointments.get(i));
             }
         }
     }
 
-    public static void cancelAppointment() {
-
+    public static void cancelAppointment(ArrayList<Appointment> appointments) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose appointment id : ");
+        int appointmentId = scanner.nextInt();
+        for (int i = 0; i < appointments.size(); i++) {
+            if (Objects.equals(appointments.get(i).getAppointmentId(), appointmentId)) {
+                System.out.println(appointments.remove(i));
+                System.out.println("You have successfully canceled your appointment! ");
+            }
+        }
     }
 }
