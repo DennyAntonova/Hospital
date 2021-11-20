@@ -1,4 +1,5 @@
 package com.company;
+
 import java.time.format.DateTimeFormatter;
 
 public class Appointment {
@@ -10,6 +11,9 @@ public class Appointment {
     private DateTimeFormatter time;
     private int doctorID;
 
+    public int getAppointmentId() {
+        return appointmentId;
+    }
 
     public int getPatientID() {
         return patientID;
