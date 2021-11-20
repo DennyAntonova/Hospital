@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import static com.company.Doctor.userId;
 
 public class User {
     private int id;
