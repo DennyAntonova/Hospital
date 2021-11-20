@@ -10,9 +10,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        ArrayList<User> doctors = readDoctorsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\doctors");
-        ArrayList<Appointment> appointments = readAppointmentsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\appointments");
-        ArrayList<User> patients = readPatientsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\patients");
+        ArrayList<User> doctors = readDoctorsFromCSV("D:\\DigitalMontana\\OOP\\Hospital\\src\\com\\company\\doctors");
+        ArrayList<Appointment> appointments = readAppointmentsFromCSV("D:\\DigitalMontana\\OOP\\Hospital\\src\\com\\company\\appointments");
+        ArrayList<User> patients = readPatientsFromCSV("D:\\DigitalMontana\\OOP\\Hospital\\src\\com\\company\\patients");
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to online system Hospital");
