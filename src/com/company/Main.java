@@ -27,7 +27,6 @@ public class Main {
             System.out.println("2. Sort reversed hours");
             int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
             if (selectionFromTheMainMenu == 1) {
-
                 reversedHours(appointments);
             } else if (selectionFromTheMainMenu == 2) {
                 System.out.println("Select an option from the following menu");
@@ -45,7 +44,6 @@ public class Main {
                 }
             }
         } else if (choice == 2) {
-
             login(patients);
             System.out.println("Menu:");
             System.out.println("1. Reversed hours.");
@@ -53,10 +51,10 @@ public class Main {
             System.out.println("3. Cancellation of an appointment.");
             int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
             if (selectionFromTheMainMenu == 1) {
-
             } else if (selectionFromTheMainMenu == 2) {
             } else if (selectionFromTheMainMenu == 3) {
             }
         }
     }
+
 }
