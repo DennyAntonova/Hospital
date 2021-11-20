@@ -30,7 +30,6 @@ public class Patient extends User {
     }
 
     public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
-
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
