@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.io.IOException;
 import java.util.*;
 
 import static com.company.ReadFile.*;
@@ -8,11 +9,11 @@ import static com.company.User.login;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        ArrayList<User> doctors = readDoctorsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\doctors");
-        ArrayList<Appointment> appointments = readAppointmentsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\appointments");
-        ArrayList<User> patients = readPatientsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital5\\src\\com\\company\\patients");
+        ArrayList<User> doctors = readDoctorsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\doctors");
+        ArrayList<Appointment> appointments = readAppointmentsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\appointments");
+        ArrayList<User> patients = readPatientsFromCSV("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\patients");
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to online system Hospital");
@@ -62,8 +63,16 @@ public class Main {
             System.out.println("3. Cancellation of an appointment.");
             int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
             if (selectionFromTheMainMenu == 1) {
-                Patient.reversedHours(appointments, patientUserId);
+                Patient.reversedHoursP(appointments, patientUserId);
             } else if (selectionFromTheMainMenu == 2) {
+                System.out.println("To change the time press 1: ");
+                System.out.println("To change the date press 2: ");
+                int changeDateOrTime=Integer.parseInt(scanner.nextLine());
+                if(changeDateOrTime==1){
+                Patient.changeTime(appointments);}
+                if(changeDateOrTime==2){
+                Patient.changeDate(appointments);}
+                System.out.println(appointments);
             } else if (selectionFromTheMainMenu == 3) {
                 Patient.cancelAppointment(appointments);
             }

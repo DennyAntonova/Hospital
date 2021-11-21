@@ -35,16 +35,18 @@ public class Appointment {
         return date;
     }
 
-    public void setDate(DateTimeFormatter date) {
-        this.date = date;
+    public Object setDate(String date) {
+        this.date = DateTimeFormatter.ofPattern(date);
+        return null;
     }
 
     public DateTimeFormatter getTime() {
         return time;
     }
 
-    public void setTime(DateTimeFormatter time) {
-        this.time = time;
+    public Object setTime(String time) {
+        this.time = DateTimeFormatter.ofPattern(time);
+        return null;
     }
 
     public int getDoctorID() {
@@ -77,7 +79,7 @@ public class Appointment {
                 ", time=" + time +
                 ", doctorID=" + doctorID +
 
-                             '}';
+                '}';
     }
 }
 

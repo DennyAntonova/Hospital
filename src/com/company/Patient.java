@@ -1,5 +1,9 @@
 package com.company;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Patient extends User {
@@ -29,7 +33,7 @@ public class Patient extends User {
                 '}';
     }
 
-    public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
+    public static void reversedHoursP(ArrayList<Appointment> appointments, String userId) {
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
@@ -38,7 +42,58 @@ public class Patient extends User {
         }
     }
 
-    public static void cancelAppointment(ArrayList<Appointment> appointments) {
+    public static void changeTime(ArrayList<Appointment> appointments) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose appointment id : ");
+        int appointmentId = scanner.nextInt();
+        System.out.println("Select a new time: ");
+        String newTime = scanner.next();
+        for (int i = 0; i < appointments.size(); i++) {
+            if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
+                System.out.println(appointments);
+            }
+            File file = new File("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\changeApp.csv");
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
+            bw.newLine();
+            for (int j = 0; j < appointments.size(); j++) {
+                bw.write(String.valueOf(appointments.get(j)));
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        }
+    }
+
+    public static void changeDate(ArrayList<Appointment> appointments) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Choose appointment id : ");
+        int appointmentId = scanner.nextInt();
+        System.out.println("Select a new date: ");
+        String newDate = scanner.next();
+        for (int i = 0; i < appointments.size(); i++) {
+            if (Objects.equals(appointments.get(appointmentId - 1).setDate(newDate), appointmentId)) {
+                System.out.println(appointments);
+            }
+            File file = new File("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\changeApp.csv");
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
+            bw.newLine();
+            for (int j = 0; j < appointments.size(); j++) {
+                bw.write(String.valueOf(appointments.get(j)));
+                bw.newLine();
+            }
+            bw.close();
+            fw.close();
+        }
+    }
+
+
+    public static void cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -50,3 +105,5 @@ public class Patient extends User {
         }
     }
 }
+
+
