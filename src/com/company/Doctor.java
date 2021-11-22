@@ -2,8 +2,6 @@ package com.company;
 
 import java.util.*;
 
-import static java.util.Collections.*;
-
 public class Doctor extends User {
 
     private HospitalSpecialties speciality;
@@ -70,26 +68,20 @@ public class Doctor extends User {
     public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments) {
 
     }
-
-    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
-//        reversedHoursForDoctor.sort(Comparator.naturalOrder());
-//        System.out.println(reversedHoursForDoctor);
+   public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+        reversedHoursForDoctor.sort(Appointment::compareToDate);
+        System.out.println(reversedHoursForDoctor);
     }
-
     public static void SortingByAppointmentForExaminationOfPatientsInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
-//      sort(reversedHoursForDoctor, reverseOrder());
-//        System.out.println(reversedHoursForDoctor);
-
+        reversedHoursForDoctor.sort(Appointment::compareToDateDescending);
+        System.out.println(reversedHoursForDoctor);
     }
-
     public static void SortingByPatientsIdInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToPatientId);
         System.out.println(reversedHoursForDoctor);
     }
-
     public static void SortingByPatientsIdInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
-      reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
+        reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
         System.out.println(reversedHoursForDoctor);
     }
-
 }

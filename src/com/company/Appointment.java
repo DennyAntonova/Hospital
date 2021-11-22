@@ -88,10 +88,7 @@ public class Appointment<T> implements Comparable<Appointment> {
 
         }
         return this.appointmentId - o.getAppointmentId();
-
     }
-
-
     public int compareToPatientId(Appointment o) {
         if (this.patientID != o.getPatientID()) {
         }
@@ -103,23 +100,31 @@ public class Appointment<T> implements Comparable<Appointment> {
         }
         return o.getPatientID() - this.patientID;
     }
+
+    public static int compareToDate(Appointment o1, Appointment o2) {
+        String x1 = String.valueOf(o1.getDate());
+        String x2 = String.valueOf(o2.getDate());
+        int compareDateAndTime = x1.compareTo(x2);
+        if (compareDateAndTime != 0){
+            return compareDateAndTime;
+        }
+        String x3 = String.valueOf(o1.getTime());
+        String x4 = String.valueOf(o2.getTime());
+        compareDateAndTime = x3.compareTo(x4);
+
+        return compareDateAndTime;
+    }
+    public static int compareToDateDescending(Appointment o1, Appointment o2) {
+        String x1 = String.valueOf(o1.getDate());
+        String x2 = String.valueOf(o2.getDate());
+        int compareDateAndTime = x2.compareTo(x1);
+        if (compareDateAndTime != 0){
+            return compareDateAndTime;
+        }
+        String x3 = String.valueOf(o1.getTime());
+        String x4 = String.valueOf(o2.getTime());
+        compareDateAndTime = x4.compareTo(x3);
+
+        return compareDateAndTime;
+    }
 }
-    //    public static int compareToDate(Appointment o1, Appointment o2) {
-//        String x1 = String.valueOf(o1.getDate());
-//        String x2 = String.valueOf(o2.get());
-//        return o1.compareTo(o2);
-//    }
-//    public static int compareToTime(Appointment o1, Appointment o2) {
-//        String x1 = String.valueOf(o1.getTime());
-//        String x2 = String.valueOf(o2.getTime());
-//        return o2.compareTo(o1);
-//
-//    }public int compareTo(Appointment o) {
-//
-//        return LocalDate.parse(getDate()).compareTo(LocalDate.parse(getDate()), );
-//    }
-//    public int compareToPatientIdDescending(Appointment o1, Appointment o2) {
-//        DateTimeFormatter fm = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//         parse(o1.getDate(), fm)
-//                .compareTo(parse(o2.getDate(), fm)));
-//    }
