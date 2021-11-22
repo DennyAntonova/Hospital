@@ -3,6 +3,7 @@ package com.company;
 
 import java.util.*;
 
+import static com.company.Doctor.*;
 import static com.company.ReadFile.*;
 import static com.company.User.login;
 
@@ -26,26 +27,32 @@ public class Main {
             String doctorName = scanner.nextLine();
             System.out.println("Please enter your second name");
             String doctorSecondName = scanner.nextLine();
-            login(doctors, doctorUserId,doctorName,doctorSecondName);
+            login(doctors, doctorUserId, doctorName, doctorSecondName);
             System.out.println("Menu:");
             System.out.println("1. Reversed hours.");
             System.out.println("2. Sort reversed hours");
             int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
             if (selectionFromTheMainMenu == 1) {
-                Doctor.reversedHours(appointments,doctorUserId);
+                System.out.println(reversedHours(appointments, doctorUserId));
             } else if (selectionFromTheMainMenu == 2) {
                 System.out.println("Select an option from the following menu");
                 System.out.println("1. Sort by patient name in ascending order");
                 System.out.println("2. Sort by patient name in descending order");
                 System.out.println("3. Sorting by appointment for examination of patients in ascending order");
                 System.out.println("4. Sorting by appointment for examination of patients in descending order");
-                System.out.println("5. Sorting by patients ID");
+                System.out.println("5. Sorting by patients ID in ascending order ");
+                System.out.println("6. Sorting by patients ID in descending order ");
                 int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
                 if (selectionFromSortReversedHours == 1) {
                 } else if (selectionFromSortReversedHours == 2) {
                 } else if (selectionFromSortReversedHours == 3) {
+                    SortingByAppointmentForExaminationOfPatientsInAscendingOrder(reversedHours(appointments, doctorUserId));
                 } else if (selectionFromSortReversedHours == 4) {
+                    SortingByAppointmentForExaminationOfPatientsInDescendingOrder(reversedHours(appointments, doctorUserId));
                 } else if (selectionFromSortReversedHours == 5) {
+                    SortingByPatientsIdInAscendingOrder(reversedHours(appointments, doctorUserId));
+                } else if (selectionFromSortReversedHours == 6) {
+                    SortingByPatientsIdInDescendingOrder(reversedHours(appointments, doctorUserId));
                 }
             }
         } else if (choice == 2) {
