@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.*;
 
+import static java.util.Collections.*;
+
 public class Doctor extends User {
 
     private HospitalSpecialties speciality;
@@ -32,9 +34,9 @@ public class Doctor extends User {
     }
 
 
-
-    public static void reversedHours(ArrayList<Appointment> appointments,String userId) {
+    public static ArrayList<Appointment> reversedHours(ArrayList<Appointment> appointments, String userId) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<Appointment> reversedHoursForDoctor = new ArrayList<>();
         System.out.println("For reference saved doctor's custom hours, press 1");
         System.out.println("For reference by id entered the system, press 2");
         int choiceIdDoctor = Integer.parseInt(scanner.nextLine());
@@ -44,26 +46,50 @@ public class Doctor extends User {
             int idReversedHours = Integer.parseInt(scanner.nextLine());
             for (int i = 0; i < appointments.size(); i++) {
                 if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-                    System.out.println(appointments.get(i));
+                    reversedHoursForDoctor.add(appointments.get(i));
                 }
             }
         } else if (choiceIdDoctor == 2) {
             int idReversedHours = Integer.parseInt(userId);
             for (int i = 0; i < appointments.size(); i++) {
                 if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-                    System.out.println(appointments.get(i));
+                    reversedHoursForDoctor.add(appointments.get(i));
                 }
             }
-        } /*else {
-            String idReversedHours = userId;
+        } else {
+            int idReversedHours = Integer.parseInt(userId);
             for (int i = 0; i < appointments.size(); i++) {
                 if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-
+                    reversedHoursForDoctor.add(appointments.get(i));
                 }
             }
+        }
+        return reversedHoursForDoctor;
+    }
 
-        }*/
-    } public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments){
+    public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments) {
 
     }
+
+    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+//        reversedHoursForDoctor.sort(Comparator.naturalOrder());
+//        System.out.println(reversedHoursForDoctor);
+    }
+
+    public static void SortingByAppointmentForExaminationOfPatientsInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+//      sort(reversedHoursForDoctor, reverseOrder());
+//        System.out.println(reversedHoursForDoctor);
+
+    }
+
+    public static void SortingByPatientsIdInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+        reversedHoursForDoctor.sort(Appointment::compareToPatientId);
+        System.out.println(reversedHoursForDoctor);
+    }
+
+    public static void SortingByPatientsIdInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+      reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
+        System.out.println(reversedHoursForDoctor);
+    }
+
 }
