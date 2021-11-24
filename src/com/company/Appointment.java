@@ -2,9 +2,10 @@ package com.company;
 
 import java.time.format.DateTimeFormatter;
 
+public class Appointment implements Comparable<Appointment> {
+  
 import static java.time.format.DateTimeFormatter.*;
 
-public class Appointment<T> implements Comparable<Appointment> {
 
     private final int appointmentId;
     private int patientID;
