@@ -3,8 +3,11 @@ package com.company;
 import java.time.format.DateTimeFormatter;
 
 public class Appointment implements Comparable<Appointment> {
+  
+import static java.time.format.DateTimeFormatter.*;
 
-    private int appointmentId;
+
+    private final int appointmentId;
     private int patientID;
     private TypeOfExaminations examination;
     private DateTimeFormatter date;
@@ -31,12 +34,13 @@ public class Appointment implements Comparable<Appointment> {
         this.examination = examination;
     }
 
-    public DateTimeFormatter getDate() {
-        return date;
+    public String getDate() {
+        String newDate = String.valueOf(date);
+        return newDate;
     }
 
     public Object setDate(String date) {
-        this.date = DateTimeFormatter.ofPattern(date);
+        this.date = ofPattern(date);
         return null;
     }
 
@@ -45,7 +49,7 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     public Object setTime(String time) {
-        this.time = DateTimeFormatter.ofPattern(time);
+        this.time = ofPattern(time);
         return null;
     }
 
@@ -75,8 +79,8 @@ public class Appointment implements Comparable<Appointment> {
                 "appointmentID=" + appointmentId +
                 ", patientID=" + patientID +
                 ", examination=" + examination +
-                ", date=" + date +
-                ", time=" + time +
+                ", date=" + getDate() +
+                ", time=" + getTime() +
                 ", doctorID=" + doctorID +
 
                 '}';

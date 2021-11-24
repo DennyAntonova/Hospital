@@ -65,7 +65,19 @@ public class Doctor extends User {
         return reversedHoursForDoctor;
     }
 
-    public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments) {
+    public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments, ArrayList<User> patients) {
+        ArrayList<User> reversedHoursForDoctorwithNamePatient = new ArrayList<>();
+        for (int i = 0; i < patients.size(); i++) {
+            for (int j = 0; j < appointments.size(); j++) {
+                if (patients.get(0).equals(appointments.get(1))) {
+                    reversedHoursForDoctorwithNamePatient.add(6, patients.get(1));
+                    reversedHoursForDoctorwithNamePatient.add(7, patients.get(2));
+                }
+
+            }
+        }
+        System.out.println(reversedHoursForDoctorwithNamePatient);
+
 
     }
 
