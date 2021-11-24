@@ -33,13 +33,27 @@ public class Patient extends User {
                 '}';
     }
 
-    public static void reversedHoursP(ArrayList<Appointment> appointments, String userId) {
+    public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
                 System.out.println(appointments.get(i));
             }
         }
+    }
+    public static void printWriter(ArrayList<Appointment>appointments) throws IOException {
+        File file = new File("changeApp.csv");
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+
+        bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
+        bw.newLine();
+        for (int j = 0; j < appointments.size(); j++) {
+            bw.write(String.valueOf(appointments.get(j)));
+            bw.newLine();
+        }
+        bw.close();
+        fw.close();
     }
 
     public static void changeTime(ArrayList<Appointment> appointments) throws IOException {
@@ -52,18 +66,7 @@ public class Patient extends User {
             if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
                 System.out.println(appointments);
             }
-            File file = new File("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\changeApp.csv");
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
-            bw.newLine();
-            for (int j = 0; j < appointments.size(); j++) {
-                bw.write(String.valueOf(appointments.get(j)));
-                bw.newLine();
-            }
-            bw.close();
-            fw.close();
+           printWriter(appointments);
         }
     }
 
@@ -77,18 +80,7 @@ public class Patient extends User {
             if (Objects.equals(appointments.get(appointmentId - 1).setDate(newDate), appointmentId)) {
                 System.out.println(appointments);
             }
-            File file = new File("C:\\Users\\Stefi\\IdeaProjects\\Hospital8\\src\\com\\company\\changeApp.csv");
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
-            bw.newLine();
-            for (int j = 0; j < appointments.size(); j++) {
-                bw.write(String.valueOf(appointments.get(j)));
-                bw.newLine();
-            }
-            bw.close();
-            fw.close();
+           printWriter(appointments);
         }
     }
 
@@ -101,6 +93,7 @@ public class Patient extends User {
             if (Objects.equals(appointments.get(i).getAppointmentId(), appointmentId)) {
                 System.out.println(appointments.remove(i));
                 System.out.println("You have successfully canceled your appointment! ");
+                printWriter(appointments);
             }
         }
     }

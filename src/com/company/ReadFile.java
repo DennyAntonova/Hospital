@@ -13,6 +13,8 @@ import java.util.EnumMap;
 import static com.sun.tools.javac.util.StringUtils.toUpperCase;
 
 public class ReadFile {
+    public static Object User;
+
     public static ArrayList<User> readDoctorsFromCSV(String fileName) {
         ArrayList<User> doctors = new ArrayList<>();
         Path pathToFile = Paths.get(fileName);

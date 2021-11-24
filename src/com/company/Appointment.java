@@ -2,7 +2,7 @@ package com.company;
 
 import java.time.format.DateTimeFormatter;
 
-public class Appointment<T> implements Comparable<Appointment> {
+public class Appointment implements Comparable<Appointment> {
 
     private int appointmentId;
     private int patientID;
@@ -89,6 +89,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         }
         return this.appointmentId - o.getAppointmentId();
     }
+
     public int compareToPatientId(Appointment o) {
         if (this.patientID != o.getPatientID()) {
         }
@@ -105,7 +106,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         String x1 = String.valueOf(o1.getDate());
         String x2 = String.valueOf(o2.getDate());
         int compareDateAndTime = x1.compareTo(x2);
-        if (compareDateAndTime != 0){
+        if (compareDateAndTime != 0) {
             return compareDateAndTime;
         }
         String x3 = String.valueOf(o1.getTime());
@@ -114,11 +115,12 @@ public class Appointment<T> implements Comparable<Appointment> {
 
         return compareDateAndTime;
     }
+
     public static int compareToDateDescending(Appointment o1, Appointment o2) {
         String x1 = String.valueOf(o1.getDate());
         String x2 = String.valueOf(o2.getDate());
         int compareDateAndTime = x2.compareTo(x1);
-        if (compareDateAndTime != 0){
+        if (compareDateAndTime != 0) {
             return compareDateAndTime;
         }
         String x3 = String.valueOf(o1.getTime());
