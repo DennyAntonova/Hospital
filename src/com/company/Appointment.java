@@ -2,9 +2,11 @@ package com.company;
 
 import java.time.format.DateTimeFormatter;
 
+import static java.time.format.DateTimeFormatter.*;
+
 public class Appointment<T> implements Comparable<Appointment> {
 
-    private int appointmentId;
+    private final int appointmentId;
     private int patientID;
     private TypeOfExaminations examination;
     private DateTimeFormatter date;
@@ -31,12 +33,13 @@ public class Appointment<T> implements Comparable<Appointment> {
         this.examination = examination;
     }
 
-    public DateTimeFormatter getDate() {
-        return date;
+    public String getDate() {
+        String newDate = String.valueOf(date);
+        return newDate;
     }
 
     public Object setDate(String date) {
-        this.date = DateTimeFormatter.ofPattern(date);
+        this.date = ofPattern(date);
         return null;
     }
 
@@ -45,7 +48,7 @@ public class Appointment<T> implements Comparable<Appointment> {
     }
 
     public Object setTime(String time) {
-        this.time = DateTimeFormatter.ofPattern(time);
+        this.time = ofPattern(time);
         return null;
     }
 
@@ -75,8 +78,8 @@ public class Appointment<T> implements Comparable<Appointment> {
                 "appointmentID=" + appointmentId +
                 ", patientID=" + patientID +
                 ", examination=" + examination +
-                ", date=" + date +
-                ", time=" + time +
+                ", date=" + getDate() +
+                ", time=" + getTime() +
                 ", doctorID=" + doctorID +
 
                 '}';
@@ -89,6 +92,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         }
         return this.appointmentId - o.getAppointmentId();
     }
+
     public int compareToPatientId(Appointment o) {
         if (this.patientID != o.getPatientID()) {
         }
@@ -105,7 +109,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         String x1 = String.valueOf(o1.getDate());
         String x2 = String.valueOf(o2.getDate());
         int compareDateAndTime = x1.compareTo(x2);
-        if (compareDateAndTime != 0){
+        if (compareDateAndTime != 0) {
             return compareDateAndTime;
         }
         String x3 = String.valueOf(o1.getTime());
@@ -114,11 +118,12 @@ public class Appointment<T> implements Comparable<Appointment> {
 
         return compareDateAndTime;
     }
+
     public static int compareToDateDescending(Appointment o1, Appointment o2) {
         String x1 = String.valueOf(o1.getDate());
         String x2 = String.valueOf(o2.getDate());
         int compareDateAndTime = x2.compareTo(x1);
-        if (compareDateAndTime != 0){
+        if (compareDateAndTime != 0) {
             return compareDateAndTime;
         }
         String x3 = String.valueOf(o1.getTime());

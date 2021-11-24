@@ -1,8 +1,8 @@
 package com.company;
 
-
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static com.company.Doctor.*;
 import static com.company.ReadFile.*;
@@ -31,7 +31,8 @@ public class Main {
             login(doctors, doctorUserId, doctorName, doctorSecondName);
             System.out.println("Menu:");
             System.out.println("1. Reversed hours.");
-            System.out.println("2. Sort reversed hours");
+            System.out.println("2. Sort reversed hours for doctor");
+            System.out.println(("3. Sort all reversed hours"));
             int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
             if (selectionFromTheMainMenu == 1) {
                 System.out.println(reversedHours(appointments, doctorUserId));
@@ -46,6 +47,8 @@ public class Main {
                 int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
                 if (selectionFromSortReversedHours == 1) {
                 } else if (selectionFromSortReversedHours == 2) {
+                    sortByPatientNameInAscendingOrder(reversedHours(appointments, doctorUserId), patients);
+
                 } else if (selectionFromSortReversedHours == 3) {
                     SortingByAppointmentForExaminationOfPatientsInAscendingOrder(reversedHours(appointments, doctorUserId));
                 } else if (selectionFromSortReversedHours == 4) {
@@ -55,33 +58,52 @@ public class Main {
                 } else if (selectionFromSortReversedHours == 6) {
                     SortingByPatientsIdInDescendingOrder(reversedHours(appointments, doctorUserId));
                 }
-            }
-        } else if (choice == 2) {
-            System.out.println("Please enter user_ID");
-            String patientUserId = scanner.nextLine();
-            System.out.println("Please enter your first name");
-            String patientName = scanner.nextLine();
-            System.out.println("Please enter your second name");
-            String patientSecondName = scanner.nextLine();
-            login(patients, patientUserId, patientName, patientSecondName);
-            System.out.println("Menu:");
-            System.out.println("1. Reversed hours.");
-            System.out.println("2. Change date / time of an appointment.");
-            System.out.println("3. Cancellation of an appointment.");
-            int selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
-            if (selectionFromTheMainMenu == 1) {
-                Patient.reversedHoursP(appointments, patientUserId);
-            } else if (selectionFromTheMainMenu == 2) {
-                System.out.println("To change the time press 1: ");
-                System.out.println("To change the date press 2: ");
-                int changeDateOrTime=Integer.parseInt(scanner.nextLine());
-                if(changeDateOrTime==1){
-                Patient.changeTime(appointments);}
-                if(changeDateOrTime==2){
-                Patient.changeDate(appointments);}
-                System.out.println(appointments);
             } else if (selectionFromTheMainMenu == 3) {
-                Patient.cancelAppointment(appointments);
+                System.out.println("1. Sort by doctors name");
+                System.out.println("2. Sort by hospital ward");
+                System.out.println("3. Sorting by date of visit");
+                int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
+                if (selectionFromSortReversedHours == 1) {
+
+                } else if (selectionFromSortReversedHours == 2) {
+
+
+                } else if (selectionFromSortReversedHours == 3) {
+                    Map<String, Long> counting = appointments.stream().collect(
+                            Collectors.groupingBy(Appointment::getDate, Collectors.counting()));
+                    System.out.print(counting.toString().replaceAll("''", ""));
+
+
+                } else if (choice == 2) {
+                    System.out.println("Please enter user_ID");
+                    String patientUserId = scanner.nextLine();
+                    System.out.println("Please enter your first name");
+                    String patientName = scanner.nextLine();
+                    System.out.println("Please enter your second name");
+                    String patientSecondName = scanner.nextLine();
+                    login(patients, patientUserId, patientName, patientSecondName);
+                    System.out.println("Menu:");
+                    System.out.println("1. Reversed hours.");
+                    System.out.println("2. Change date / time of an appointment.");
+                    System.out.println("3. Cancellation of an appointment.");
+                    selectionFromTheMainMenu = Integer.parseInt(scanner.nextLine());
+                    if (selectionFromTheMainMenu == 1) {
+                        Patient.reversedHoursP(appointments, patientUserId);
+                    } else if (selectionFromTheMainMenu == 2) {
+                        System.out.println("To change the time press 1: ");
+                        System.out.println("To change the date press 2: ");
+                        int changeDateOrTime = Integer.parseInt(scanner.nextLine());
+                        if (changeDateOrTime == 1) {
+                            Patient.changeTime(appointments);
+                        }
+                        if (changeDateOrTime == 2) {
+                            Patient.changeDate(appointments);
+                        }
+                        System.out.println(appointments);
+                    } else if (selectionFromTheMainMenu == 3) {
+                        Patient.cancelAppointment(appointments);
+                    }
+                }
             }
         }
     }
