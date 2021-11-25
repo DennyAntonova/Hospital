@@ -65,6 +65,7 @@ public class User {
         }
         if (!isContain) {
             System.out.println("Wrong ID or Name. Please enter again!");
-                 }
+            Main.startMenu();
+        }
     }
 }

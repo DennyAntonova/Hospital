@@ -17,9 +17,9 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to online system Hospital");
         startMenu();
-
     }
-   public static void startMenu() throws IOException {
+
+    public static void startMenu() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("For doctors, press 1.");
         System.out.println("For patients, press 2.");
@@ -36,6 +36,7 @@ public class Main {
             patientsOptions(userId, name, secondName);
         }
     }
+
     public static void backToPatientsMenu(String userId, String name, String secondName) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("If you want to go back to patients menu, PRESS 1: ");
@@ -92,6 +93,7 @@ public class Main {
             backToPatientsMenu(userId, name, secondName);
         }
     }
+
     public static void doctorsOptions(String userId, String name, String secondName) throws IOException {
         Scanner scanner = new Scanner(System.in);
         ArrayList<User> doctors = readDoctorsFromCSV("doctors");
@@ -117,10 +119,10 @@ public class Main {
             System.out.println("6. Sorting by patients ID in descending order ");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
-                backToDoctorsMenu(userId, name, secondName);
 
+                backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
-                sortByPatientNameInAscendingOrder(reversedHours(appointments, userId), patients);
+
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 3) {
@@ -138,7 +140,6 @@ public class Main {
             } else if (selectionFromSortReversedHours == 6) {
                 SortingByPatientsIdInDescendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
-
             }
         } else if (selectionFromTheMainMenu == 3) {
             System.out.println("1. Sort by doctors name");
@@ -146,24 +147,30 @@ public class Main {
             System.out.println("3. Sorting by date of visit");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
-                Map<Integer, Long> counting = appointments.stream().collect(
-                        groupingBy(Appointment::getDoctorID, counting()));
-                int countOfDoctors = 0;
-                for (int i = 0; i < doctors.size(); i++) {
-                    if (counting.containsKey(doctors.get(i).getId())) {
-                        countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
-                        System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
-                    }
-                }
-                        backToDoctorsMenu(userId, name, secondName);
-                    } else if (selectionFromSortReversedHours == 2) {
-                        backToDoctorsMenu(userId, name, secondName);
-                    } else if (selectionFromSortReversedHours == 3) {
-                        Map<String, Long> count = appointments.stream().collect(
-                                Collectors.groupingBy(Appointment::getDate, counting()));
-                        System.out.println(count.toString().replaceAll("''", ""));
-                        backToDoctorsMenu(userId, name, secondName);
-                    }
-                }
+                sortByName(appointments, doctors);
+                backToDoctorsMenu(userId, name, secondName);
+            } else if (selectionFromSortReversedHours == 2) {
+
+                backToDoctorsMenu(userId, name, secondName);
+            } else if (selectionFromSortReversedHours == 3) {
+                sortByDate(appointments);
+                backToDoctorsMenu(userId, name, secondName);
             }
         }
+    }    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
+        Map<Integer, Long> counting = appointments.stream().collect(
+                groupingBy(Appointment::getDoctorID, counting()));
+        int countOfDoctors = 0;
+        for (int i = 0; i < doctors.size(); i++) {
+            if (counting.containsKey(doctors.get(i).getId())) {
+                countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
+                System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
+            }
+        }
+    }
+   public static void sortByDate(ArrayList<Appointment> appointments) {
+        Map<String, Long> count = appointments.stream().collect(
+                Collectors.groupingBy(Appointment::getDate, counting()));
+        System.out.println(count.toString().replaceAll("''", ""));
+    }
+}
