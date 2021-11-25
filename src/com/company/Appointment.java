@@ -1,7 +1,6 @@
 package com.company;
 
 import java.time.format.DateTimeFormatter;
-
 import static java.time.format.DateTimeFormatter.*;
 
 public class Appointment<T> implements Comparable<Appointment> {
@@ -68,7 +67,6 @@ public class Appointment<T> implements Comparable<Appointment> {
         this.date = date;
         this.time = time;
         this.doctorID = doctorID;
-
     }
 
     @Override

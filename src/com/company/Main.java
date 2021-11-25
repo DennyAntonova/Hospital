@@ -2,11 +2,10 @@ package com.company;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
-
 import static com.company.Doctor.*;
 import static com.company.ReadFile.*;
 import static com.company.User.login;
+import static java.util.stream.Collectors.*;
 
 public class Main {
 
@@ -48,7 +47,6 @@ public class Main {
                 if (selectionFromSortReversedHours == 1) {
                 } else if (selectionFromSortReversedHours == 2) {
                     sortByPatientNameInAscendingOrder(reversedHours(appointments, doctorUserId), patients);
-
                 } else if (selectionFromSortReversedHours == 3) {
                     SortingByAppointmentForExaminationOfPatientsInAscendingOrder(reversedHours(appointments, doctorUserId));
                 } else if (selectionFromSortReversedHours == 4) {
@@ -64,16 +62,20 @@ public class Main {
                 System.out.println("3. Sorting by date of visit");
                 int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
                 if (selectionFromSortReversedHours == 1) {
-
+                    Map<Integer, Long> counting = appointments.stream().collect(
+                            groupingBy(Appointment::getDoctorID, counting()));
+                    int countOfDoctors = 0;
+                    for (int i = 0; i < doctors.size(); i++) {
+                        if (counting.containsKey(doctors.get(i).getId())) {
+                            countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
+                            System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
+                        }
+                    }
                 } else if (selectionFromSortReversedHours == 2) {
-
-
                 } else if (selectionFromSortReversedHours == 3) {
                     Map<String, Long> counting = appointments.stream().collect(
-                            Collectors.groupingBy(Appointment::getDate, Collectors.counting()));
+                            groupingBy(Appointment::getDate, counting()));
                     System.out.print(counting.toString().replaceAll("''", ""));
-
-
                 } else if (choice == 2) {
                     System.out.println("Please enter user_ID");
                     String patientUserId = scanner.nextLine();
