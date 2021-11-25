@@ -99,5 +99,6 @@ public class Doctor extends User {
     public static void SortingByPatientsIdInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
         System.out.println(reversedHoursForDoctor);
+
     }
 }

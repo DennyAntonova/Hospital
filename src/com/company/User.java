@@ -1,9 +1,16 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 import java.util.stream.Collectors;
+
+import static com.company.Doctor.*;
+import static com.company.Doctor.reversedHours;
+import static com.company.ReadFile.*;
+import static com.company.ReadFile.readAppointmentsFromCSV;
 
 
 public class User {
@@ -50,7 +57,7 @@ public class User {
                 '}';
     }
 
-    public static void login(ArrayList<User> userList, String userId, String name, String secondName) {
+    public static void login(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
         boolean isContain = false;
         List<String> strings = userList.stream()
                 .map(object -> Objects.toString(object, null))
@@ -65,7 +72,6 @@ public class User {
         }
         if (!isContain) {
             System.out.println("Wrong ID or Name. Please enter again!");
-            login(userList, userId, name, secondName);
-        }
+            Hospital.startMenu();        }
     }
 }
