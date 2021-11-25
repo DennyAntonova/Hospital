@@ -1,17 +1,16 @@
 package com.company;
 
-import java.util.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
 import static com.company.User.login;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 public class Main {
 
@@ -20,8 +19,7 @@ public class Main {
         startMenu();
 
     }
-
-    public static void startMenu() throws IOException {
+   public static void startMenu() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("For doctors, press 1.");
         System.out.println("For patients, press 2.");
@@ -38,7 +36,6 @@ public class Main {
             patientsOptions(userId, name, secondName);
         }
     }
-
     public static void backToPatientsMenu(String userId, String name, String secondName) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("If you want to go back to patients menu, PRESS 1: ");
@@ -95,7 +92,6 @@ public class Main {
             backToPatientsMenu(userId, name, secondName);
         }
     }
-
     public static void doctorsOptions(String userId, String name, String secondName) throws IOException {
         Scanner scanner = new Scanner(System.in);
         ArrayList<User> doctors = readDoctorsFromCSV("doctors");
@@ -150,22 +146,24 @@ public class Main {
             System.out.println("3. Sorting by date of visit");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
-                  Map<Integer, Long> counting = appointments.stream().collect(
-                            groupingBy(Appointment::getDoctorID, counting()));
-                    int countOfDoctors = 0;
-                    for (int i = 0; i < doctors.size(); i++) {
-                        if (counting.containsKey(doctors.get(i).getId())) {
-                            countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
-                            System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
-                backToDoctorsMenu(userId, name, secondName);
-            } else if (selectionFromSortReversedHours == 2) {
-                backToDoctorsMenu(userId, name, secondName);
-            } else if (selectionFromSortReversedHours == 3) {
-                Map<String, Long> counting = appointments.stream().collect(
-                        Collectors.groupingBy(Appointment::getDate, Collectors.counting()));
-                System.out.print(counting.toString().replaceAll("''", ""));
-                backToDoctorsMenu(userId, name, secondName);
+                Map<Integer, Long> counting = appointments.stream().collect(
+                        groupingBy(Appointment::getDoctorID, counting()));
+                int countOfDoctors = 0;
+                for (int i = 0; i < doctors.size(); i++) {
+                    if (counting.containsKey(doctors.get(i).getId())) {
+                        countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
+                        System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
+                    }
+                }
+                        backToDoctorsMenu(userId, name, secondName);
+                    } else if (selectionFromSortReversedHours == 2) {
+                        backToDoctorsMenu(userId, name, secondName);
+                    } else if (selectionFromSortReversedHours == 3) {
+                        Map<String, Long> count = appointments.stream().collect(
+                                Collectors.groupingBy(Appointment::getDate, counting()));
+                        System.out.println(count.toString().replaceAll("''", ""));
+                        backToDoctorsMenu(userId, name, secondName);
+                    }
+                }
             }
         }
-    }
-}

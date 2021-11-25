@@ -32,7 +32,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         this.examination = examination;
     }
 
-    public String getDate() {
+    public  String getDate() {
         String newDate = String.valueOf(date);
         return newDate;
     }
