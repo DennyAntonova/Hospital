@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -148,6 +150,13 @@ public class Main {
             System.out.println("3. Sorting by date of visit");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
+                  Map<Integer, Long> counting = appointments.stream().collect(
+                            groupingBy(Appointment::getDoctorID, counting()));
+                    int countOfDoctors = 0;
+                    for (int i = 0; i < doctors.size(); i++) {
+                        if (counting.containsKey(doctors.get(i).getId())) {
+                            countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
+                            System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
                 backToDoctorsMenu(userId, name, secondName);
