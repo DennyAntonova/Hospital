@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+import static java.util.stream.Collectors.groupingBy;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
