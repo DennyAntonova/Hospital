@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.*;
+
 public class Doctor extends User {
 
     HospitalSpecialties speciality;
@@ -20,38 +21,41 @@ public class Doctor extends User {
         this.speciality = speciality;
 
     }
+
     public static ArrayList<Appointment> reversedHours(ArrayList<Appointment> appointments, String userId) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Appointment> reversedHoursForDoctor = new ArrayList<>();
         System.out.println("For reference saved doctor's custom hours, press 1");
         System.out.println("For reference by id entered the system, press 2");
-        int choiceIdDoctor = Integer.parseInt(scanner.nextLine());
+        try {
+            int choiceIdDoctor = Integer.parseInt(scanner.nextLine());
 
-        if (choiceIdDoctor == 1) {
-            System.out.println("Choice Id Doctor");
-            int idReversedHours = Integer.parseInt(scanner.nextLine());
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-                    reversedHoursForDoctor.add(appointments.get(i));
+            if (choiceIdDoctor == 1) {
+                System.out.println("Choice Id Doctor");
+                int idReversedHours = Integer.parseInt(scanner.nextLine());
+                for (int i = 0; i < appointments.size(); i++) {
+                    if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
+                        reversedHoursForDoctor.add(appointments.get(i));
+                    }
                 }
-            }
-        } else if (choiceIdDoctor == 2) {
-            int idReversedHours = Integer.parseInt(userId);
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-                    reversedHoursForDoctor.add(appointments.get(i));
+            } else if (choiceIdDoctor == 2) {
+                int idReversedHours = Integer.parseInt(userId);
+                for (int i = 0; i < appointments.size(); i++) {
+                    if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
+                        reversedHoursForDoctor.add(appointments.get(i));
+                    }
                 }
+            } else {
+                System.out.println("Wrong input! Try again!");
+                reversedHours(appointments, userId);
             }
-        } else {
-            int idReversedHours = Integer.parseInt(userId);
-            for (int i = 0; i < appointments.size(); i++) {
-                if (Objects.equals(appointments.get(i).getDoctorID(), idReversedHours)) {
-                    reversedHoursForDoctor.add(appointments.get(i));
-                }
-            }
+            return reversedHoursForDoctor;
+        } catch (Exception e) {
+            System.out.println("Wrong input! Try again!");
         }
         return reversedHoursForDoctor;
     }
+
 
     public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments, ArrayList<User> patients) {
         ArrayList<User> reversedHoursForDoctorwithNamePatient = new ArrayList<>();
@@ -65,7 +69,9 @@ public class Doctor extends User {
             }
         }
         System.out.println(reversedHoursForDoctorwithNamePatient);
-    }   public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+    }
+
+    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToDate);
         System.out.println(reversedHoursForDoctor);
     }
