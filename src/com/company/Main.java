@@ -1,10 +1,9 @@
 package com.company;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
+
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
@@ -15,7 +14,11 @@ import static java.util.stream.Collectors.groupingBy;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Welcome to online system Hospital");
+        ArrayList<User> doctors = readDoctorsFromCSV("doctors");
+        ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
+
+//        System.out.print((sortSpecialty(appointments, doctors).toString()));
+//        System.out.println("Welcome to online system Hospital");
         startMenu();
     }
 
@@ -157,7 +160,9 @@ public class Main {
                 backToDoctorsMenu(userId, name, secondName);
             }
         }
-    }    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
+    }
+
+    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
         Map<Integer, Long> counting = appointments.stream().collect(
                 groupingBy(Appointment::getDoctorID, counting()));
         int countOfDoctors = 0;
@@ -168,9 +173,10 @@ public class Main {
             }
         }
     }
-   public static void sortByDate(ArrayList<Appointment> appointments) {
-        Map<String, Long> count = appointments.stream().collect(
+
+    public static void sortByDate(ArrayList<Appointment> appointments) {
+        Map<String, Long> counting = appointments.stream().collect(
                 Collectors.groupingBy(Appointment::getDate, counting()));
-        System.out.println(count.toString().replaceAll("''", ""));
+        System.out.println(counting.toString().replaceAll("''", ""));
     }
 }

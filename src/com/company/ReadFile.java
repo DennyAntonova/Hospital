@@ -6,11 +6,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.EnumMap;
-
-import static com.sun.tools.javac.util.StringUtils.toUpperCase;
 
 public class ReadFile {
     public static Object User;
@@ -37,7 +36,7 @@ public class ReadFile {
         int id = Integer.parseInt(metadata[0]);
         String firstName = metadata[1];
         String secondName = metadata[2];
-        HospitalSpecialties specialties =HospitalSpecialties.valueOf(metadata[3].toUpperCase());
+        HospitalSpecialties specialties = HospitalSpecialties.valueOf(metadata[3].toUpperCase());
         return new Doctor(id, firstName, secondName, specialties);
     }
 
@@ -75,7 +74,7 @@ public class ReadFile {
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(",");
-                Appointment appointment = createAppointments(attributes);
+                Appointment appointment = createAppointment(attributes);
                 appointments.add(appointment);
                 line = br.readLine();
             }
@@ -85,12 +84,12 @@ public class ReadFile {
         return appointments;
     }
 
-    public static Appointment createAppointments(String[] metadata) {
+    public static Appointment createAppointment(String[] metadata) {
         int idAppointment = Integer.parseInt(metadata[0]);
         int idPatient = Integer.parseInt(metadata[1]);
         TypeOfExaminations typeOfExamination = TypeOfExaminations.valueOf(metadata[2].toUpperCase());
-        DateTimeFormatter date = DateTimeFormatter.ofPattern(metadata[3]);
-        DateTimeFormatter time = DateTimeFormatter.ofPattern(metadata[4]);
+        String date = metadata[3];
+        String time = metadata[4];
         int idDoctor = Integer.parseInt(metadata[5]);
         return new Appointment(idAppointment, idPatient, typeOfExamination, date, time, idDoctor);
     }

@@ -1,15 +1,12 @@
 package com.company;
 
-import java.time.format.DateTimeFormatter;
-import static java.time.format.DateTimeFormatter.*;
-
 public class Appointment<T> implements Comparable<Appointment> {
 
     private final int appointmentId;
     private int patientID;
     private TypeOfExaminations examination;
-    private DateTimeFormatter date;
-    private DateTimeFormatter time;
+    private String date;
+    private String time;
     private int doctorID;
 
     public int getAppointmentId() {
@@ -38,16 +35,16 @@ public class Appointment<T> implements Comparable<Appointment> {
     }
 
     public Object setDate(String date) {
-        this.date = ofPattern(date);
+        this.date = date;
         return null;
     }
 
-    public DateTimeFormatter getTime() {
+    public String getTime() {
         return time;
     }
 
     public Object setTime(String time) {
-        this.time = ofPattern(time);
+        this.time = time;
         return null;
     }
 
@@ -60,7 +57,7 @@ public class Appointment<T> implements Comparable<Appointment> {
     }
 
     public Appointment(int appointmentID, int patientID, TypeOfExaminations examination,
-                       DateTimeFormatter date, DateTimeFormatter time, int doctorID) {
+                       String date, String time, int doctorID) {
         this.appointmentId = appointmentID;
         this.patientID = patientID;
         this.examination = examination;
@@ -71,22 +68,13 @@ public class Appointment<T> implements Comparable<Appointment> {
 
     @Override
     public String toString() {
-        return "Appointment{" +
-
-                "appointmentID=" + appointmentId +
-                ", patientID=" + patientID +
-                ", examination=" + examination +
-                ", date=" + getDate() +
-                ", time=" + getTime() +
-                ", doctorID=" + doctorID +
-
-                '}';
+        return "appointmentID=%d, patientID=%d, examination=%s, date=%s, time=%s, doctorID=%d%n".
+                formatted(appointmentId, patientID, examination, getDate(), getTime(), doctorID);
     }
 
     @Override
     public int compareTo(Appointment o) {
         if (this.appointmentId != o.getAppointmentId()) {
-
         }
         return this.appointmentId - o.getAppointmentId();
     }
