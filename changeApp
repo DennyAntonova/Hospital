@@ -1,0 +1,21 @@
+
+appointmentID=1, patientID=1, examination=INITIAL, date=28-06-2021, time=1200, doctorID=2
+
+appointmentID=2, patientID=4, examination=SECONDARY, date=21-06-2021, time=1230, doctorID=2
+
+appointmentID=3, patientID=7, examination=CONSULTATION, date=15-06-2021, time=1030, doctorID=3
+
+appointmentID=4, patientID=6, examination=INITIAL, date=15-06-2021, time=1030, doctorID=2
+
+appointmentID=5, patientID=3, examination=PROCEDURE, date=15-06-2021, time=1030, doctorID=2
+
+appointmentID=6, patientID=1, examination=INITIAL, date=28-06-2021, time=0900, doctorID=2
+
+appointmentID=7, patientID=5, examination=SECONDARY, date=21-06-2021, time=1830, doctorID=4
+
+appointmentID=8, patientID=7, examination=CONSULTATION, date=15-06-2021, time=1630, doctorID=2
+
+appointmentID=9, patientID=8, examination=INITIAL, date=15-06-2021, time=1530, doctorID=2
+
+appointmentID=10, patientID=3, examination=PROCEDURE, date=15-06-2021, time=1130, doctorID=2
+

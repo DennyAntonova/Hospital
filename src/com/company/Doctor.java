@@ -2,18 +2,12 @@ package com.company;
 
 import java.util.*;
 
+
 public class Doctor extends User {
 
-    private HospitalSpecialties speciality;
+    HospitalSpecialties speciality;
 
-    public HospitalSpecialties getSpeciality() {
-        return speciality;
-    }
 
-    public void setSpeciality(HospitalSpecialties speciality) {
-
-        this.speciality = speciality;
-    }
 
     @Override
     public String toString() {
@@ -77,11 +71,7 @@ public class Doctor extends User {
             }
         }
         System.out.println(reversedHoursForDoctorwithNamePatient);
-
-
-    }
-
-    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+    }   public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToDate);
         System.out.println(reversedHoursForDoctor);
     }
