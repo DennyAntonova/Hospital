@@ -4,8 +4,22 @@ import java.util.*;
 
 public class Doctor extends User {
 
-    HospitalSpecialties speciality;
+    private HospitalSpecialties speciality;
 
+    public HospitalSpecialties getSpeciality() {
+        return speciality;
+    }
+
+    public void setSpeciality(HospitalSpecialties speciality) {
+
+        this.speciality = speciality;
+    }
+
+    public Doctor(int id, String firstName, String secondName, HospitalSpecialties speciality) {
+        super(id, firstName, secondName);
+        this.speciality = speciality;
+
+    }
     @Override
     public String toString() {
         return "Doctor{" +
@@ -16,11 +30,7 @@ public class Doctor extends User {
                 '}';
     }
 
-    public Doctor(int id, String firstName, String secondName, HospitalSpecialties speciality) {
-        super(id, firstName, secondName);
-        this.speciality = speciality;
 
-    }
 
     public static ArrayList<Appointment> reversedHours(ArrayList<Appointment> appointments, String userId) {
         Scanner scanner = new Scanner(System.in);
