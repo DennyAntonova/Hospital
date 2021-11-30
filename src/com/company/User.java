@@ -50,7 +50,7 @@ public class User {
                 '}';
     }
 
-    public static void login(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
+    public static void loginForDoctors(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
         boolean isContain = false;
         List<String> strings = userList.stream()
                 .map(object -> Objects.toString(object, null))
@@ -65,7 +65,24 @@ public class User {
         }
         if (!isContain) {
             System.out.println("Wrong ID or Name. Please enter again!");
-            Main.startMenu();
+            Main.loginDoctor();
+        }
+    } public static void loginForPatients(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
+        boolean isContain = false;
+        List<String> strings = userList.stream()
+                .map(object -> Objects.toString(object, null))
+                .collect(Collectors.toList());
+        for (String user : strings) {
+            if (user.contains(name) && user.contains(secondName) && (user.contains(userId))) {
+                System.out.printf("Welcome, %s %s!", name, secondName);
+                System.out.println();
+                isContain = true;
+                break;
+            }
+        }
+        if (!isContain) {
+            System.out.println("Wrong ID or Name. Please enter again!");
+            Main.loginPatient();
         }
     }
 }

@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
-import static com.company.User.login;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
@@ -15,6 +14,27 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to online system Hospital");
         startMenu();
+    }
+    public static void loginPatient() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter user_ID");
+        String userId = scanner.next();
+        System.out.println("Please enter your first name");
+        String name = scanner.next();
+        System.out.println("Please enter your second name");
+        String secondName = scanner.next();
+        patientsOptions(userId, name, secondName);
+    }
+
+    public static void loginDoctor() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter user ID");
+        String userId = scanner.next();
+        System.out.println("Please enter your first name");
+        String name = scanner.next();
+        System.out.println("Please enter your second name");
+        String secondName = scanner.next();
+        doctorsOptions(userId, name, secondName);
     }
 
     public static void startMenu() throws IOException {
@@ -24,21 +44,9 @@ public class Main {
         try {
             int choice = scanner.nextInt();
             if (choice == 1) {
-                System.out.println("Please enter user ID");
-                String userId = scanner.next();
-                System.out.println("Please enter your first name");
-                String name = scanner.next();
-                System.out.println("Please enter your second name");
-                String secondName = scanner.next();
-                doctorsOptions(userId, name, secondName);
+                loginDoctor();
             } else if (choice == 2) {
-                System.out.println("Please enter user_ID");
-                String userId = scanner.next();
-                System.out.println("Please enter your first name");
-                String name = scanner.next();
-                System.out.println("Please enter your second name");
-                String secondName = scanner.next();
-                patientsOptions(userId, name, secondName);
+                loginPatient();
             } else {
                 System.out.println("Wrong input!Try again!");
                 startMenu();
@@ -48,6 +56,7 @@ public class Main {
             startMenu();
         }
     }
+
 
     public static void backToPatientsMenu(String userId, String name, String secondName) throws IOException {
         Scanner scanner = new Scanner(System.in);
@@ -88,7 +97,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
         ArrayList<User> patients = readPatientsFromCSV("patients");
-        login(patients, userId, name, secondName);
+        loginForPatients(patients, userId, name, secondName);
         try {
             System.out.println("Menu:");
             System.out.println("1. Reversed hours.");
@@ -129,7 +138,7 @@ public class Main {
         ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
         ArrayList<User> patients = readPatientsFromCSV("patients");
 
-        login(doctors, userId, name, secondName);
+        loginForDoctors(doctors, userId, name, secondName);
         try {
             System.out.println("Menu:");
             System.out.println("1. Reversed hours.");
