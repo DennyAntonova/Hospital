@@ -84,7 +84,6 @@ public class Patient extends User {
         }
     }
 
-
     public static void cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");

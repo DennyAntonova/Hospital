@@ -1,13 +1,9 @@
 package com.company;
 
 import java.util.*;
-
-
 public class Doctor extends User {
 
     HospitalSpecialties speciality;
-
-
 
     @Override
     public String toString() {
@@ -24,8 +20,6 @@ public class Doctor extends User {
         this.speciality = speciality;
 
     }
-
-
     public static ArrayList<Appointment> reversedHours(ArrayList<Appointment> appointments, String userId) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Appointment> reversedHoursForDoctor = new ArrayList<>();

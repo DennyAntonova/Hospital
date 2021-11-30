@@ -3,7 +3,6 @@ package com.company;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
@@ -14,12 +13,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        ArrayList<User> doctors = readDoctorsFromCSV("doctors");
-        ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
-
-//        System.out.print((sortSpecialty(appointments, doctors).toString()));
-//        System.out.println("Welcome to online system Hospital");
-        startMenu();
+     startMenu();
     }
 
     public static void startMenu() throws IOException {
