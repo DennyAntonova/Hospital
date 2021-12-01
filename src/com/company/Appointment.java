@@ -92,7 +92,7 @@ public class Appointment<T> implements Comparable<Appointment> {
                 "," + getTime() +
                 "," + doctorID ;
     }
-*/
+
     @Override
     public int compareTo(Appointment o) {
         if (this.appointmentId != o.getAppointmentId()) {
