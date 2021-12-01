@@ -42,14 +42,11 @@ public class Patient extends User {
         }
     }
     public static void printWriter(ArrayList<Appointment>appointments) throws IOException {
-        File file = new File("changeApp.csv");
+        File file = new File("appointments");
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
-
-        bw.write("appointment_id, patient_id, type_of_examination, date, time, doctor_id ");
-        bw.newLine();
         for (int j = 0; j < appointments.size(); j++) {
-            bw.write(String.valueOf(appointments.get(j)));
+            bw.write(appointments.get(j).toString2().toLowerCase(Locale.ROOT));
             bw.newLine();
         }
         bw.close();
@@ -60,30 +57,30 @@ public class Patient extends User {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
-        System.out.println("Select a new time: ");
+        System.out.println("Select a new time int format HHMM: ");
         String newTime = scanner.next();
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
                 System.out.println(appointments);
             }
-           printWriter(appointments);
+            printWriter(appointments);
         }
+        System.out.println("You have successfully changed your time!");
     }
-
     public static void changeDate(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
-        System.out.println("Select a new date: ");
+        System.out.println("Select a new date in format DD-MM-YY: ");
         String newDate = scanner.next();
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setDate(newDate), appointmentId)) {
                 System.out.println(appointments);
             }
-           printWriter(appointments);
+                printWriter(appointments);
         }
+        System.out.println("you have successfully changed your date!");
     }
-
     public static void cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
