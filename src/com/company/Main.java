@@ -2,19 +2,21 @@ package com.company;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
+
+import static com.company.Appointment.sortByDate;
+import static com.company.Appointment.sortByName;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+
 
 public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to online system Hospital");
         startMenu();
     }
+
     public static void loginPatient() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter user_ID");
@@ -39,6 +41,7 @@ public class Main {
 
     public static void startMenu() throws IOException {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Hospital Мain Мenu:");
         System.out.println("For doctors, press 1.");
         System.out.println("For patients, press 2.");
         try {
@@ -99,7 +102,7 @@ public class Main {
         ArrayList<User> patients = readPatientsFromCSV("patients");
         loginForPatients(patients, userId, name, secondName);
         try {
-            System.out.println("Menu:");
+            System.out.println("Main Menu:");
             System.out.println("1. Reversed hours.");
             System.out.println("2. Change date / time of an appointment.");
             System.out.println("3. Cancellation of an appointment.");
@@ -140,7 +143,7 @@ public class Main {
 
         loginForDoctors(doctors, userId, name, secondName);
         try {
-            System.out.println("Menu:");
+            System.out.println("Main Menu:");
             System.out.println("1. Reversed hours.");
             System.out.println("2. Sort reversed hours for doctor");
             System.out.println(("3. Sort all reversed hours"));
@@ -227,23 +230,5 @@ public class Main {
             System.out.println("Wrong input!Try again!");
             sortDoctorsAppointments(userId, name, secondName, appointments);
         }
-    }
-
-    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
-        Map<Integer, Long> counting = appointments.stream().collect(
-                groupingBy(Appointment::getDoctorID, counting()));
-        int countOfDoctors = 0;
-        for (int i = 0; i < doctors.size(); i++) {
-            if (counting.containsKey(doctors.get(i).getId())) {
-                countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
-                System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
-            }
-        }
-    }
-
-    public static void sortByDate(ArrayList<Appointment> appointments) {
-        Map<String, Long> count = appointments.stream().collect(
-                Collectors.groupingBy(Appointment::getDate, counting()));
-        System.out.println(count.toString().replaceAll("''", ""));
     }
 }
