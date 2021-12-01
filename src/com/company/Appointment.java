@@ -78,6 +78,14 @@ public class Appointment<T> implements Comparable<Appointment> {
         return "appointmentID=%d, patientID=%d, examination=%s, date=%s, time=%s, doctorID=%d%n".
                 formatted(appointmentId, patientID, examination, getDate(), getTime(), doctorID);
     }
+    public String toString2() {
+        return ""+ appointmentId +
+                "," + patientID +
+                "," + examination +
+                "," + getDate() +
+                "," + getTime() +
+                "," + doctorID ;
+    }
 
     @Override
     public int compareTo(Appointment o) {
