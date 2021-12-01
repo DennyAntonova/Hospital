@@ -165,7 +165,8 @@ public class Main {
         }
     }
 
-    public static void groupingOfPatients(String userId, String name, String secondName, ArrayList<Appointment> appointments, ArrayList<User> doctors) throws IOException {
+    public static void groupingOfPatients(String userId, String name, String secondName,
+                                          ArrayList<Appointment> appointments, ArrayList<User> doctors) throws IOException {
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("1. Sort by doctors name");
@@ -191,7 +192,8 @@ public class Main {
     }
 
 
-    public static void sortDoctorsAppointments(String userId, String name, String secondName, ArrayList<Appointment> appointments) throws IOException {
+    public static void sortDoctorsAppointments(String userId, String name, String secondName,
+                                               ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("Select an option from the following menu");

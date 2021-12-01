@@ -50,7 +50,8 @@ public class User {
                 '}';
     }
 
-    public static void loginForDoctors(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
+    public static void loginForDoctors(ArrayList<User> userList, String userId, String name,
+                                       String secondName) throws IOException {
         boolean isContain = false;
         List<String> strings = userList.stream()
                 .map(object -> Objects.toString(object, null))
@@ -69,7 +70,8 @@ public class User {
         }
     }
 
-    public static void loginForPatients(ArrayList<User> userList, String userId, String name, String secondName) throws IOException {
+    public static void loginForPatients(ArrayList<User> userList, String userId, String name,
+                                        String secondName) throws IOException {
         boolean isContain = false;
         List<String> strings = userList.stream()
                 .map(object -> Objects.toString(object, null))

@@ -81,12 +81,14 @@ public class Doctor extends User {
         System.out.println(reversedHoursForDoctorwithNamePatient);
     }
 
-    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+    public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder
+            (ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToDate);
         System.out.println(reversedHoursForDoctor);
     }
 
-    public static void SortingByAppointmentForExaminationOfPatientsInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+    public static void SortingByAppointmentForExaminationOfPatientsInDescendingOrder
+            (ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToDateDescending);
         System.out.println(reversedHoursForDoctor);
     }
