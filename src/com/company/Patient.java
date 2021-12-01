@@ -26,17 +26,17 @@ public class Patient extends User {
     @Override
     public String toString() {
         return "Patient{" +
-                "id=" + super.getId() +
-                ", firstName='" + super.getFirstName() + '\'' +
-                ", secondName='" + super.getSecondName() + '\'' +
-                ", age=" + age +
+                "age=" + age +
+                ", id=" + getId() +
+                ", firstName='" + getFirstName() + '\'' +
+                ", secondName='" + getSecondName() + '\'' +
                 '}';
     }
 
     public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
-            if (Objects.equals(appointments.get(i).getPatientID(), idReversedHours)) {
+            if (Objects.equals(appointments.get(i).getPatient().getId(), idReversedHours)) {
                 System.out.println(appointments.get(i));
             }
         }
