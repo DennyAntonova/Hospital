@@ -1,4 +1,5 @@
 package com.company;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -9,6 +10,9 @@ import java.util.ArrayList;
 
 public class ReadFile {
     public static Object User;
+    ArrayList<User> doctors = readDoctorsFromCSV("doctors");
+    ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
+    ArrayList<User> patients = readPatientsFromCSV("patients");
 
     public static ArrayList<User> readDoctorsFromCSV(String fileName) {
         ArrayList<User> doctors = new ArrayList<>();
@@ -63,6 +67,9 @@ public class ReadFile {
     }
 
     public static ArrayList<Appointment> readAppointmentsFromCSV(String fileName) {
+        ArrayList<User> doctors = readDoctorsFromCSV("doctors");
+        ArrayList<User> patients = readPatientsFromCSV("patients");
+
         ArrayList<Appointment> appointments = new ArrayList<>();
         Path pathToFile = Paths.get(fileName);
         try (BufferedReader br = Files.newBufferedReader(pathToFile,
@@ -70,7 +77,8 @@ public class ReadFile {
             String line = br.readLine();
             while (line != null) {
                 String[] attributes = line.split(",");
-                Appointment appointment = createAppointment(attributes);
+                Appointment appointment = createAppointment(attributes, doctors,
+                        patients);
                 appointments.add(appointment);
                 line = br.readLine();
             }
@@ -80,13 +88,37 @@ public class ReadFile {
         return appointments;
     }
 
-    public static Appointment createAppointment(String[] metadata) {
+
+    public static Appointment createAppointment(String[] metadata, ArrayList<User> doctors, ArrayList<User> patients) {
         int idAppointment = Integer.parseInt(metadata[0]);
         int idPatient = Integer.parseInt(metadata[1]);
+        Patient patient = (Patient) findPatientById(patients, idPatient);
         TypeOfExaminations typeOfExamination = TypeOfExaminations.valueOf(metadata[2].toUpperCase());
         String date = metadata[3];
         String time = metadata[4];
         int idDoctor = Integer.parseInt(metadata[5]);
-        return new Appointment(idAppointment, idPatient, typeOfExamination, date, time, idDoctor);
+        Doctor doctor = findDoctorById(doctors, idDoctor);
+        return new Appointment(idAppointment, patient, typeOfExamination, date, time, doctor);
+
+    }
+
+    public static Patient findPatientById(ArrayList<User> patients, int idPatient) {
+        for (int i = 0; i <patients.size() ; i++) {
+            if(idPatient == patients.get(i).getId()){
+                return (Patient) patients.get(i);
+            }
+        }
+        return null;
+    }
+
+    public static Doctor findDoctorById(ArrayList<User> doctors, int idDoctor) {
+        for (int i = 0; i <doctors.size() ; i++) {
+            if(idDoctor == doctors.get(i).getId()){
+                return (Doctor) doctors.get(i);
+            }
+
+        }
+
+        return null;
     }
 }
