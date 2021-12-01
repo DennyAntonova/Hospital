@@ -5,7 +5,7 @@ import java.util.*;
 
 
 import static com.company.Appointment.sortByDate;
-import static com.company.Appointment.sortByName;
+//import static com.company.Appointment.sortByName;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
@@ -13,7 +13,7 @@ import static com.company.ReadFile.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Welcome to online system Hospital");
+       System.out.println("Welcome to online system Hospital");
         startMenu();
     }
 
@@ -174,7 +174,7 @@ public class Main {
             System.out.println("3. Sorting by date of visit");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
-                sortByName(appointments, doctors);
+              //  sortByName(appointments, doctors);
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
                 backToDoctorsMenu(userId, name, secondName);
