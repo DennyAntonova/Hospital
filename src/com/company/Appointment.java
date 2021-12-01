@@ -84,15 +84,15 @@ public class Appointment<T> implements Comparable<Appointment> {
                 ", doctor=" + doctor +
                 '}';
     }
-
-    public String toString2() {
-        return "" + appointmentId +
-                "," + getPatient().getId() +
+   /* public String toString2() {
+        return ""+ appointmentId +
+                "," + patientID +
                 "," + examination +
                 "," + getDate() +
                 "," + getTime() +
-                "," + getPatient().getId();
+                "," + doctorID ;
     }
+
     @Override
     public int compareTo(Appointment o) {
         if (this.appointmentId != o.getAppointmentId()) {
