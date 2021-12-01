@@ -1,5 +1,12 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Map;
+
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
+
 public class Appointment<T> implements Comparable<Appointment> {
 
     private final int appointmentId;
@@ -29,7 +36,7 @@ public class Appointment<T> implements Comparable<Appointment> {
         this.examination = examination;
     }
 
-    public  String getDate() {
+    public String getDate() {
         String newDate = String.valueOf(date);
         return newDate;
     }
@@ -118,4 +125,23 @@ public class Appointment<T> implements Comparable<Appointment> {
 
         return compareDateAndTime;
     }
+
+    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
+        Map<Integer, Long> counting = appointments.stream().collect(
+                groupingBy(Appointment::getDoctorID, counting()));
+        int countOfDoctors = 0;
+        for (int i = 0; i < doctors.size(); i++) {
+            if (counting.containsKey(doctors.get(i).getId())) {
+                countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
+                System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
+            }
+        }
+    }
+
+    public static void sortByDate(ArrayList<Appointment> appointments) {
+        Map<String, Long> count = appointments.stream().collect(
+                groupingBy(Appointment::getDate, counting()));
+        System.out.println(count.toString().replaceAll("''", ""));
+    }
+
 }
