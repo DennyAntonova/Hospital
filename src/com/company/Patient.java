@@ -42,7 +42,8 @@ public class Patient extends User {
         }
         return String.valueOf(appointments);
     }
-    public static void printWriter(ArrayList<Appointment>appointments) throws IOException {
+
+    public static void printWriter(ArrayList<Appointment> appointments) throws IOException {
         File file = new File("appointments");
         FileWriter fw = new FileWriter(file);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -68,7 +69,9 @@ public class Patient extends User {
         System.out.println("You have successfully changed your time!");
         return String.valueOf(appointments);
     }
+
     public static String changeDate(ArrayList<Appointment> appointments) throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -79,12 +82,14 @@ public class Patient extends User {
                 System.out.println(appointments);
                 return String.valueOf(appointments);
             }
-                printWriter(appointments);
+            printWriter(appointments);
         }
         System.out.println("you have successfully changed your date!");
         return String.valueOf(appointments);
     }
+
     public static String cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
