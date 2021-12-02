@@ -64,6 +64,7 @@ public class Patient extends User {
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
                 System.out.println(appointments);
+                return String.valueOf(appointments);
             } printWriter(appointments);
         }
         System.out.println("You have successfully changed your time!");
@@ -98,6 +99,7 @@ public class Patient extends User {
                 System.out.println(appointments.remove(i));
                 System.out.println("You have successfully canceled your appointment! ");
                 printWriter(appointments);
+                return String.valueOf(appointments);
             }
         }
         return String.valueOf(appointments);
