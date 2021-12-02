@@ -1,6 +1,10 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.*;
+
+import static com.company.SortingReversedHoursForDoctor.*;
+import static com.company.SortingReversedHoursForDoctor.SortingByPatientsIdInDescendingOrder;
 
 
 public class Doctor extends User {
@@ -65,5 +69,6 @@ public class Doctor extends User {
         }
         return reversedHoursForDoctor;
     }
+
 
 }
