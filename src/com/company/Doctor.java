@@ -66,18 +66,15 @@ public class Doctor extends User {
     }
 
 
-    public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> appointments, ArrayList<User> patients) {
-        ArrayList<User> reversedHoursForDoctorwithNamePatient = new ArrayList<>();
-        for (int i = 0; i < patients.size(); i++) {
-            for (int j = 0; j < appointments.size(); j++) {
-                if (patients.get(0).equals(appointments.get(1))) {
-                    reversedHoursForDoctorwithNamePatient.add(6, patients.get(1));
-                    reversedHoursForDoctorwithNamePatient.add(7, patients.get(2));
-                }
+    public static void sortByPatientNameInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+        reversedHoursForDoctor.sort(Appointment::compareByNamePatient);
+        System.out.println(reversedHoursForDoctor);
 
-            }
-        }
-        System.out.println(reversedHoursForDoctorwithNamePatient);
+    }
+    public static void sortByPatientNameInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
+        reversedHoursForDoctor.sort(Appointment::compareByNamePatientDescending);
+        System.out.println(reversedHoursForDoctor);
+
     }
 
     public static void SortingByAppointmentForExaminationOfPatientsInAscendingOrder
@@ -93,12 +90,12 @@ public class Doctor extends User {
     }
 
     public static void SortingByPatientsIdInAscendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
-      // reversedHoursForDoctor.sort(Appointment::compareToPatientId);
+      reversedHoursForDoctor.sort(Appointment::compareToPatientId);
         System.out.println(reversedHoursForDoctor);
     }
 
     public static void SortingByPatientsIdInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
-       // reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
+       reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
         System.out.println(reversedHoursForDoctor);
 
     }

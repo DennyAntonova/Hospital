@@ -2,14 +2,10 @@ package com.company;
 
 import java.io.IOException;
 import java.util.*;
-
-
-import static com.company.Appointment.sortByDate;
-//import static com.company.Appointment.sortByName;
+import static com.company.Appointment.*;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
-
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -174,12 +170,16 @@ public class Main {
             System.out.println("3. Sorting by date of visit");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
-              //  sortByName(appointments, doctors);
+                groupByNameDoctors(appointments);
+                System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
+                sortByHospitalWard(appointments);
+                System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 3) {
                 sortByDate(appointments);
+                System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else {
                 System.out.println("Wrong input!Try again!");
@@ -205,8 +205,10 @@ public class Main {
             System.out.println("6. Sorting by patients ID in descending order ");
             int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
             if (selectionFromSortReversedHours == 1) {
+                sortByPatientNameInAscendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
+                sortByPatientNameInDescendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 3) {
