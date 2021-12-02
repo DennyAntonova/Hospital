@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Map;
-
-
+import java.util.*;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
@@ -75,16 +72,11 @@ public class Appointment<T> implements Comparable<Appointment> {
 
     @Override
     public String toString() {
-        return "Appointment{" +
-                "appointmentId=" + appointmentId +
-                ", patient=" + patient +
-                ", examination=" + examination +
-                ", date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", doctor=" + doctor +
-                '}';
+        return "Appointment{appointmentId=%d,%n patient=%s, %nexamination=%s, date='%s', time='%s', %ndoctor=%s%n}".formatted
+                (appointmentId, patient, examination, date, time, doctor);
     }
-     public String toString2() {
+
+    public String toString2() {
         return "" + appointmentId +
                 "," + getPatient().getId() +
                 "," + examination +
@@ -92,6 +84,7 @@ public class Appointment<T> implements Comparable<Appointment> {
                 "," + getTime() +
                 "," + getPatient().getId();
     }
+
     @Override
     public int compareTo(Appointment o) {
         if (this.appointmentId != o.getAppointmentId()) {
@@ -99,17 +92,17 @@ public class Appointment<T> implements Comparable<Appointment> {
         return this.appointmentId - o.getAppointmentId();
     }
 
-//    public int compareToPatientId(Appointment o) {
-//        if (this.patientID != o.getPatientID()) {
-//        }
-//        return this.patientID - o.getPatientID().getId());
-//    }
-//
-//    public int compareToPatientIdDescending(Appointment o) {
-//        if (this.patientID != o.getPatientID()) {
-//        }
-//        return o.getPatientID().getId() - this.patientID;
-//    }
+    public int compareToPatientId(Appointment o) {
+        if (this.getPatient().getId() != o.getPatient().getId()) {
+        }
+        return this.getPatient().getId() - o.getPatient().getId();
+    }
+
+    public int compareToPatientIdDescending(Appointment o) {
+        if (this.getPatient().getId() != o.getPatient().getId()) {
+        }
+        return o.getPatient().getId() - this.getPatient().getId();
+    }
 
     public static int compareToDate(Appointment o1, Appointment o2) {
         String x1 = String.valueOf(o1.getDate());
@@ -139,22 +132,76 @@ public class Appointment<T> implements Comparable<Appointment> {
         return compareDateAndTime;
     }
 
-//    public static void sortByName(ArrayList<Appointment> appointments, ArrayList<User> doctors) {
-//        Map<Integer, Long> counting = appointments.stream().collect(
-//                groupingBy(Appointment::getDoctorID, counting()));
-//        int countOfDoctors = 0;
-//        for (int i = 0; i < doctors.size(); i++) {
-//            if (counting.containsKey(doctors.get(i).getId())) {
-//                countOfDoctors = Math.toIntExact(counting.get(doctors.get(i).getId()));
-//                System.out.println("Doctor " + doctors.get(i).getSecondName() + " - " + countOfDoctors);
-//            }
-//        }
-//    }
+    public static void sortByHospitalWard(ArrayList<Appointment> appointments) {
+        for (int i = 0; i < appointments.size(); i++) {
+            int sumDublicate = 0;
+            for (int j = 0; j < appointments.size(); j++) {
+                if (appointments.get(i).getDoctor().getSpeciality().equals(appointments.get(j).getDoctor().getSpeciality())) {
+                    if (j < i) {
+                        break;
+                    }
+                    sumDublicate++;
+                }
+            }
+            if (sumDublicate > 0) {
+                System.out.println(appointments.get(i).getDoctor().getSpeciality() + " "
+                        + sumDublicate);
 
+            }
+        }
+    }
     public static void sortByDate(ArrayList<Appointment> appointments) {
-        Map<String, Long> count = appointments.stream().collect(
-                groupingBy(Appointment::getDate, counting()));
-        System.out.println(count.toString().replaceAll("''", ""));
+        for (int i = 0; i < appointments.size(); i++) {
+            int sumDublicate = 0;
+            for (int j = 0; j < appointments.size(); j++) {
+                if (appointments.get(i).getDate().equals(appointments.get(j).getDate())) {
+                    if (j < i) {
+                        break;
+                    }
+                    sumDublicate++;
+                }
+            }
+            if (sumDublicate > 0) {
+                System.out.println(appointments.get(i).getDate() + " "
+                        + sumDublicate);
+
+            }
+        }
     }
 
+    public static int compareByNamePatient(Appointment o1, Appointment o2) {
+
+        return o2.getPatient().getSecondName().compareTo(o1.getPatient().getSecondName());
+    }
+
+    public static int compareByNamePatientDescending(Appointment o1, Appointment o2) {
+
+        return o1.getPatient().getSecondName().compareTo(o2.getPatient().getSecondName());
+    }
+
+    public static void groupByNameDoctors(ArrayList<Appointment> appointments) {
+        for (int i = 0; i < appointments.size(); i++) {
+            int sumDublicate = 0;
+            for (int j = 0; j < appointments.size(); j++) {
+                if (appointments.get(i).getDoctor().getSecondName().equals(appointments.get(j).getDoctor().getSecondName())) {
+                    if (j < i) {
+                        break;
+                    }
+                    sumDublicate++;
+                }
+            }
+            if (sumDublicate > 0) {
+                System.out.println("Doctor : " + appointments.get(i).getDoctor().getSecondName() + " "
+                        + sumDublicate);
+
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
