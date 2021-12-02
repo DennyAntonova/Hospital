@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ReadFile {
-    public static Object User;
+
     ArrayList<User> doctors = readDoctorsFromCSV("doctors");
     ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
     ArrayList<User> patients = readPatientsFromCSV("patients");
@@ -116,9 +116,7 @@ public class ReadFile {
             if(idDoctor == doctors.get(i).getId()){
                 return (Doctor) doctors.get(i);
             }
-
         }
-
         return null;
     }
 }
