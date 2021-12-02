@@ -33,13 +33,14 @@ public class Patient extends User {
                 '}';
     }
 
-    public static void reversedHours(ArrayList<Appointment> appointments, String userId) {
+    public static String reversedHours(ArrayList<Appointment> appointments, String userId) {
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(i).getPatient().getId(), idReversedHours)) {
                 System.out.println(appointments.get(i));
             }
         }
+        return String.valueOf(appointments);
     }
     public static void printWriter(ArrayList<Appointment>appointments) throws IOException {
         File file = new File("appointments");
@@ -53,7 +54,7 @@ public class Patient extends User {
         fw.close();
     }
 
-    public static void changeTime(ArrayList<Appointment> appointments) throws IOException {
+    public static String changeTime(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -62,12 +63,12 @@ public class Patient extends User {
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
                 System.out.println(appointments);
-            }
-            printWriter(appointments);
+            } printWriter(appointments);
         }
         System.out.println("You have successfully changed your time!");
+        return String.valueOf(appointments);
     }
-    public static void changeDate(ArrayList<Appointment> appointments) throws IOException {
+    public static String changeDate(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -76,12 +77,14 @@ public class Patient extends User {
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setDate(newDate), appointmentId)) {
                 System.out.println(appointments);
+                return String.valueOf(appointments);
             }
                 printWriter(appointments);
         }
         System.out.println("you have successfully changed your date!");
+        return String.valueOf(appointments);
     }
-    public static void cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
+    public static String cancelAppointment(ArrayList<Appointment> appointments) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -92,6 +95,7 @@ public class Patient extends User {
                 printWriter(appointments);
             }
         }
+        return String.valueOf(appointments);
     }
 }
 
