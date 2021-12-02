@@ -1,3 +1,4 @@
+
 package com.company;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class SortingReversedHoursForDoctor {
     public static void sortByPatientNameInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareByNamePatientDescending);
         System.out.println(reversedHoursForDoctor);
+
 
     }
 
@@ -30,10 +32,10 @@ public class SortingReversedHoursForDoctor {
         reversedHoursForDoctor.sort(Appointment::compareTo);
         System.out.println(reversedHoursForDoctor);
     }
-
     public static void SortingByPatientsIdInDescendingOrder(ArrayList<Appointment> reversedHoursForDoctor) {
         reversedHoursForDoctor.sort(Appointment::compareToPatientIdDescending);
         System.out.println(reversedHoursForDoctor);
 
     }
 }
+
