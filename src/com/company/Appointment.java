@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.*;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
+
 
 public class Appointment<T> implements Comparable<Appointment> {
 
@@ -85,23 +83,14 @@ public class Appointment<T> implements Comparable<Appointment> {
                 "," + getPatient().getId();
     }
 
-    @Override
-    public int compareTo(Appointment o) {
-        if (this.appointmentId != o.getAppointmentId()) {
-        }
-        return this.appointmentId - o.getAppointmentId();
+    public static int compareByNamePatient(Appointment o1, Appointment o2) {
+
+        return o2.getPatient().getSecondName().compareTo(o1.getPatient().getSecondName());
     }
 
-    public int compareToPatientId(Appointment o) {
-        if (this.getPatient().getId() != o.getPatient().getId()) {
-        }
-        return this.getPatient().getId() - o.getPatient().getId();
-    }
+    public static int compareByNamePatientDescending(Appointment o1, Appointment o2) {
 
-    public int compareToPatientIdDescending(Appointment o) {
-        if (this.getPatient().getId() != o.getPatient().getId()) {
-        }
-        return o.getPatient().getId() - this.getPatient().getId();
+        return o1.getPatient().getSecondName().compareTo(o2.getPatient().getSecondName());
     }
 
     public static int compareToDate(Appointment o1, Appointment o2) {
@@ -132,70 +121,17 @@ public class Appointment<T> implements Comparable<Appointment> {
         return compareDateAndTime;
     }
 
-    public static void sortByHospitalWard(ArrayList<Appointment> appointments) {
-        for (int i = 0; i < appointments.size(); i++) {
-            int sumDublicate = 0;
-            for (int j = 0; j < appointments.size(); j++) {
-                if (appointments.get(i).getDoctor().getSpeciality().equals(appointments.get(j).getDoctor().getSpeciality())) {
-                    if (j < i) {
-                        break;
-                    }
-                    sumDublicate++;
-                }
-            }
-            if (sumDublicate > 0) {
-                System.out.println(appointments.get(i).getDoctor().getSpeciality() + " "
-                        + sumDublicate);
-
-            }
+    @Override
+    public int compareTo(Appointment o) {
+        if (this.getPatient().getId() != o.getPatient().getId()) {
         }
+        return this.getPatient().getId() - o.getPatient().getId();
     }
-    public static void sortByDate(ArrayList<Appointment> appointments) {
-        for (int i = 0; i < appointments.size(); i++) {
-            int sumDublicate = 0;
-            for (int j = 0; j < appointments.size(); j++) {
-                if (appointments.get(i).getDate().equals(appointments.get(j).getDate())) {
-                    if (j < i) {
-                        break;
-                    }
-                    sumDublicate++;
-                }
-            }
-            if (sumDublicate > 0) {
-                System.out.println(appointments.get(i).getDate() + " "
-                        + sumDublicate);
 
-            }
+    public int compareToPatientIdDescending(Appointment o) {
+        if (this.getPatient().getId() != o.getPatient().getId()) {
         }
-    }
-
-    public static int compareByNamePatient(Appointment o1, Appointment o2) {
-
-        return o2.getPatient().getSecondName().compareTo(o1.getPatient().getSecondName());
-    }
-
-    public static int compareByNamePatientDescending(Appointment o1, Appointment o2) {
-
-        return o1.getPatient().getSecondName().compareTo(o2.getPatient().getSecondName());
-    }
-
-    public static void groupByNameDoctors(ArrayList<Appointment> appointments) {
-        for (int i = 0; i < appointments.size(); i++) {
-            int sumDublicate = 0;
-            for (int j = 0; j < appointments.size(); j++) {
-                if (appointments.get(i).getDoctor().getSecondName().equals(appointments.get(j).getDoctor().getSecondName())) {
-                    if (j < i) {
-                        break;
-                    }
-                    sumDublicate++;
-                }
-            }
-            if (sumDublicate > 0) {
-                System.out.println("Doctor : " + appointments.get(i).getDoctor().getSecondName() + " "
-                        + sumDublicate);
-
-            }
-        }
+        return o.getPatient().getId() - this.getPatient().getId();
     }
 }
 

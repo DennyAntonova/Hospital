@@ -2,10 +2,11 @@ package com.company;
 
 import java.io.IOException;
 import java.util.*;
-import static com.company.Appointment.*;
 import static com.company.Doctor.*;
 import static com.company.Doctor.reversedHours;
+import static com.company.GroupPatients.*;
 import static com.company.ReadFile.*;
+import static com.company.SortingReversedHoursForDoctor.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -174,11 +175,11 @@ public class Main {
                 System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 2) {
-                sortByHospitalWard(appointments);
+                groupByHospitalWard(appointments);
                 System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else if (selectionFromSortReversedHours == 3) {
-                sortByDate(appointments);
+                groupByDate(appointments);
                 System.out.println();
                 backToDoctorsMenu(userId, name, secondName);
             } else {
