@@ -1,7 +1,9 @@
 
 package com.company;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GroupPatients {
     public static void groupByNameDoctors(ArrayList<Appointment> appointments) {
@@ -58,6 +60,35 @@ public class GroupPatients {
                         + sumDuplicates);
 
             }
+        }
+    }
+    public static void groupingOfPatients(String userId, String name, String secondName,
+                                          ArrayList<Appointment> appointments, ArrayList<User> doctors) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("1. Sort by doctors name");
+            System.out.println("2. Sort by hospital ward");
+            System.out.println("3. Sorting by date of visit");
+            int selectionFromSortReversedHours = Integer.parseInt(scanner.nextLine());
+            if (selectionFromSortReversedHours == 1) {
+                groupByNameDoctors(appointments);
+                System.out.println();
+                DoctorOptions.backToDoctorsMenu(userId, name, secondName);
+            } else if (selectionFromSortReversedHours == 2) {
+                groupByHospitalWard(appointments);
+                System.out.println();
+                DoctorOptions.backToDoctorsMenu(userId, name, secondName);
+            } else if (selectionFromSortReversedHours == 3) {
+                groupByDate(appointments);
+                System.out.println();
+                DoctorOptions.backToDoctorsMenu(userId, name, secondName);
+            } else {
+                System.out.println("Wrong input!Try again!");
+                groupingOfPatients(userId, name, secondName, appointments, doctors);
+            }
+        } catch (Exception e) {
+            System.out.println("Wrong input!Try again!");
+            groupingOfPatients(userId, name, secondName, appointments, doctors);
         }
     }
 }
