@@ -1,7 +1,6 @@
 package com.company;
 
 
-
 public class Appointment<T> implements Comparable<Appointment> {
 
     private final int appointmentId;
@@ -70,7 +69,7 @@ public class Appointment<T> implements Comparable<Appointment> {
 
     @Override
     public String toString() {
-        return "Appointment{appointmentId=%d,%n patient=%s, %nexamination=%s, date='%s', time='%s', %ndoctor=%s%n}".formatted
+        return "-> AppointmentId=%d,%n %s, %nexamination=%s, date='%s', time='%s', %n%s%n".formatted
                 (appointmentId, patient, examination, date, time, doctor);
     }
 

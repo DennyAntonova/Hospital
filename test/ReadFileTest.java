@@ -21,9 +21,9 @@ public class ReadFileTest {
 
     @Test
     public void testFindDoctorById() {
-        int idDoctor=10;
+        int idDoctor = 10;
         Doctor expected = (Doctor) doctors.get(9);
-        Doctor actual = ReadFile.findDoctorById(doctors,idDoctor);
-        Assert.assertEquals(expected,actual);
+        Doctor actual = ReadFile.findDoctorById(doctors, idDoctor);
+        Assert.assertEquals(expected, actual);
     }
 }
