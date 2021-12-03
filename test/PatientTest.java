@@ -42,14 +42,4 @@ public class PatientTest {
         Assert.assertEquals(expected, actual);
     }
 
-    @Test
-    public void testChangeTimeMethod() {
-
-    }
-
-    @Test
-    public void testCancelAppointmentMethod() throws IOException {
-
-    }
-
 }
