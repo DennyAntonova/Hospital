@@ -103,8 +103,8 @@ public class ReadFile {
     }
 
     public static Patient findPatientById(ArrayList<User> patients, int idPatient) {
-        for (int i = 0; i <patients.size() ; i++) {
-            if(idPatient == patients.get(i).getId()){
+        for (int i = 0; i < patients.size(); i++) {
+            if (idPatient == patients.get(i).getId()) {
                 return (Patient) patients.get(i);
             }
         }
@@ -112,8 +112,8 @@ public class ReadFile {
     }
 
     public static Doctor findDoctorById(ArrayList<User> doctors, int idDoctor) {
-        for (int i = 0; i <doctors.size() ; i++) {
-            if(idDoctor == doctors.get(i).getId()){
+        for (int i = 0; i < doctors.size(); i++) {
+            if (idDoctor == doctors.get(i).getId()) {
                 return (Doctor) doctors.get(i);
             }
         }
