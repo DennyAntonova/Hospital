@@ -1,4 +1,3 @@
-
 package com.company;
 
 import java.io.IOException;
@@ -25,6 +24,7 @@ public class GroupPatients {
             }
         }
     }
+
     public static void groupByHospitalWard(ArrayList<Appointment> appointments) {
         System.out.println("Information on the number of recorded hours by hospital ward:");
         for (int i = 0; i < appointments.size(); i++) {
@@ -43,7 +43,9 @@ public class GroupPatients {
 
             }
         }
-    }public static void groupByDate(ArrayList<Appointment> appointments) {
+    }
+
+    public static void groupByDate(ArrayList<Appointment> appointments) {
         System.out.println("Information on the number of recorded hours by date:");
         for (int i = 0; i < appointments.size(); i++) {
             int sumDuplicates = 0;
@@ -62,6 +64,7 @@ public class GroupPatients {
             }
         }
     }
+
     public static void groupingOfPatients(String userId, String name, String secondName,
                                           ArrayList<Appointment> appointments, ArrayList<User> doctors) throws IOException {
         Scanner scanner = new Scanner(System.in);
