@@ -18,7 +18,7 @@ public class GroupPatients {
                 }
             }
             if (sumDublicate > 0) {
-                System.out.println("Doctor : " + appointments.get(i).getDoctor().getSecondName() + " - "
+                System.out.println("Doctor: " + appointments.get(i).getDoctor().getSecondName() + " - "
                         + sumDublicate);
 
             }
