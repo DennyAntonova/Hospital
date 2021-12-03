@@ -47,6 +47,7 @@ public class Login {
             loginPatient();
         }
     }
+
     public static void loginPatient() throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter user_ID");

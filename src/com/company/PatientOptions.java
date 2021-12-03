@@ -3,7 +3,6 @@ package com.company;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import static com.company.ReadFile.readAppointmentsFromCSV;
 import static com.company.ReadFile.readPatientsFromCSV;
 
@@ -64,6 +63,4 @@ public class PatientOptions {
             PatientOptions.patientsOptions(userId, name, secondName);
         }
     }
-
-
 }

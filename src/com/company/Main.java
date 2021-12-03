@@ -2,15 +2,10 @@ package com.company;
 
 import java.io.IOException;
 import java.util.*;
-import static com.company.Doctor.*;
-import static com.company.Doctor.reversedHours;
-import static com.company.GroupPatients.*;
-import static com.company.ReadFile.*;
-import static com.company.SortingReversedHoursForDoctor.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-       System.out.println("Welcome to online system Hospital");
+        System.out.println("Welcome to online system Hospital");
         startMenu();
     }
 
