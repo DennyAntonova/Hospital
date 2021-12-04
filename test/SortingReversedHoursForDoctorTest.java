@@ -13,7 +13,7 @@ public class SortingReversedHoursForDoctorTest {
     @Test
     public void testSortingByAppointmentForExaminationOfPatientsInAscendingOrder() {
         ArrayList<Appointment> expected = appointments;
-        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.SortingByAppointmentForExaminationOfPatientsInAscendingOrder(appointments);
+        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.sortingByAppointmentForExaminationOfPatientsInAscendingOrder(appointments);
         Assert.assertEquals(expected, actual);
     }
 
@@ -21,21 +21,21 @@ public class SortingReversedHoursForDoctorTest {
     public void testSortingByAppointmentForExaminationOfPatientsInDescendingOrder() {
         ArrayList<Appointment> expected = appointments;
         ArrayList<Appointment> actual = SortingReversedHoursForDoctor.
-                SortingByAppointmentForExaminationOfPatientsInDescendingOrder(appointments);
+                sortingByAppointmentForExaminationOfPatientsInDescendingOrder(appointments);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testSortingByPatientsIdInDescendingOrder() {
         ArrayList<Appointment> expected = appointments;
-        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.SortingByPatientsIdInDescendingOrder(appointments);
+        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.sortingByPatientsIdInDescendingOrder(appointments);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testSortingByPatientsIdInAscendingOrder() {
         ArrayList<Appointment> expected = appointments;
-        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.SortingByPatientsIdInAscendingOrder(appointments);
+        ArrayList<Appointment> actual = SortingReversedHoursForDoctor.sortingByPatientsIdInAscendingOrder(appointments);
         Assert.assertEquals(expected, actual);
     }
 

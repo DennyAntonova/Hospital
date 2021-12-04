@@ -17,7 +17,7 @@ public class GroupPatientsTest {
 
     @Test
     public void testSize() {
-        Assert.assertEquals("Checking size of ArrayList", 10, appointments.size());
+        Assert.assertEquals("Checking size of ArrayList", 17, appointments.size());
     }
 
 }
