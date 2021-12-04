@@ -84,12 +84,12 @@ public class Appointment<T> implements Comparable<Appointment> {
 
     public static int compareByNamePatient(Appointment o1, Appointment o2) {
 
-        return o2.getPatient().getSecondName().compareTo(o1.getPatient().getSecondName());
+        return o1.getPatient().getSecondName().compareTo(o2.getPatient().getSecondName());
     }
 
     public static int compareByNamePatientDescending(Appointment o1, Appointment o2) {
 
-        return o1.getPatient().getSecondName().compareTo(o2.getPatient().getSecondName());
+        return o2.getPatient().getSecondName().compareTo(o1.getPatient().getSecondName());
     }
 
     public static int compareToDate(Appointment o1, Appointment o2) {
@@ -124,13 +124,14 @@ public class Appointment<T> implements Comparable<Appointment> {
     public int compareTo(Appointment o) {
         if (this.getPatient().getId() != o.getPatient().getId()) {
         }
-        return this.getPatient().getId() - o.getPatient().getId();
+        return o.getPatient().getId() - this.getPatient().getId();
+
     }
 
     public int compareToPatientIdDescending(Appointment o) {
         if (this.getPatient().getId() != o.getPatient().getId()) {
         }
-        return o.getPatient().getId() - this.getPatient().getId();
+        return this.getPatient().getId() - o.getPatient().getId();
     }
 }
 
