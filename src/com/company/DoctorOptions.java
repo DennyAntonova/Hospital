@@ -7,7 +7,7 @@ import java.util.Scanner;
 import static com.company.Doctor.reversedHours;
 import static com.company.ReadFile.*;
 import static com.company.SortingReversedHoursForDoctor.*;
-import static com.company.SortingReversedHoursForDoctor.SortingByPatientsIdInDescendingOrder;
+import static com.company.SortingReversedHoursForDoctor.sortingByPatientsIdInDescendingOrder;
 
 public class DoctorOptions {
     public static void doctorsOptions(String userId, String name, String secondName) throws IOException {
@@ -60,19 +60,19 @@ public class DoctorOptions {
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 3) {
-                SortingByAppointmentForExaminationOfPatientsInAscendingOrder(reversedHours(appointments, userId));
+                sortingByAppointmentForExaminationOfPatientsInAscendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 4) {
-                SortingByAppointmentForExaminationOfPatientsInDescendingOrder(reversedHours(appointments, userId));
+                sortingByAppointmentForExaminationOfPatientsInDescendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 5) {
-                SortingByPatientsIdInAscendingOrder(reversedHours(appointments, userId));
+                sortingByPatientsIdInAscendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
 
             } else if (selectionFromSortReversedHours == 6) {
-                SortingByPatientsIdInDescendingOrder(reversedHours(appointments, userId));
+                sortingByPatientsIdInDescendingOrder(reversedHours(appointments, userId));
                 backToDoctorsMenu(userId, name, secondName);
             } else {
                 System.out.println("Wrong input!Try again!");

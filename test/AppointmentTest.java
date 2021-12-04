@@ -20,14 +20,14 @@ public class AppointmentTest {
     @Test
     public void testCompareByNamePatient() {
         int expected = -1;
-        int actual = appointment.compareTo(appointment2);
+        int actual = appointment2.compareTo(appointment);
         Assert.assertEquals(expected, actual);
     }
 
     @Test
     public void testCompareToPatientIdDescending() {
         int expected = 1;
-        int actual = appointment.compareToPatientIdDescending(appointment2);
+        int actual = appointment2.compareToPatientIdDescending(appointment);
         Assert.assertEquals(expected, actual);
     }
 
