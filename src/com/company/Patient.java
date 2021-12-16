@@ -60,20 +60,26 @@ public class Patient extends User {
         reversedHours(appointments, userId);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
-        int appointmentId = scanner.nextInt();
+
         System.out.println("Select a new time int format HHMM: ");
         String newTime = scanner.next();
         for (int i = 0; i < appointments.size(); i++) {
-            if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
-                System.out.println(appointments);
-                return (appointments);
-            } printWriter(appointments);
+            if (Objects.equals(appointments.get(i).getAppointmentId(), userId)) {
+                if (Objects.equals(appointments.get(Integer.parseInt(userId) - 1).setTime(newTime), userId)) {
+                    System.out.println(appointments);
+                    return (appointments);
+                }
+            }else{
+                System.out.println("You can change only yours appointment");
+               changeTime(appointments, userId);
+            }
+            printWriter(appointments);
         }
         System.out.println("You have successfully changed your time!");
         return (appointments);
     }
 
-    public static String changeDate(ArrayList<Appointment> appointments ) throws IOException {
+    public static String changeDate(ArrayList<Appointment> appointments) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
