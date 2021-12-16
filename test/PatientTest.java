@@ -14,16 +14,16 @@ public class PatientTest {
     ArrayList<Appointment> appointments = readAppointmentsFromCSV("appointments");
 
 
-    @Test
-    public void testReversedHours() throws IOException {
-        for (int i = 0; i < appointments.size(); i++) {
-            String expected = String.valueOf(appointments);
-            String actual = Patient.reversedHours(appointments, "1");
-            String msg = "";
-            Assert.assertEquals(expected, actual);
-
-        }
-    }
+//    @Test
+//    public void testReversedHours() throws IOException {
+//        for (int i = 0; i < appointments.size(); i++) {
+//            String expected = String.valueOf(appointments);
+//            String actual = Patient.reversedHours(appointments, "1");
+//            String msg = "";
+//            Assert.assertEquals(expected, actual);
+//
+//        }
+//    }
 
     @Test
     public void testToString() {
