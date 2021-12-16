@@ -33,14 +33,14 @@ public class Patient extends User {
                 '}';
     }
 
-    public static String reversedHours(ArrayList<Appointment> appointments, String userId) {
+    public static ArrayList<Appointment> reversedHours(ArrayList<Appointment> appointments, String userId) {
         int idReversedHours = Integer.parseInt(userId);
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(i).getPatient().getId(), idReversedHours)) {
                 System.out.println(appointments.get(i));
             }
         }
-        return String.valueOf(appointments);
+        return (appointments);
     }
 
     public static void printWriter(ArrayList<Appointment> appointments) throws IOException {
@@ -55,7 +55,9 @@ public class Patient extends User {
         fw.close();
     }
 
-    public static String changeTime(ArrayList<Appointment> appointments) throws IOException {
+    public static ArrayList<Appointment> changeTime(ArrayList<Appointment> appointments,
+                                                    String userId) throws IOException {
+        reversedHours(appointments, userId);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");
         int appointmentId = scanner.nextInt();
@@ -64,14 +66,14 @@ public class Patient extends User {
         for (int i = 0; i < appointments.size(); i++) {
             if (Objects.equals(appointments.get(appointmentId - 1).setTime(newTime), appointmentId)) {
                 System.out.println(appointments);
-                return String.valueOf(appointments);
+                return (appointments);
             } printWriter(appointments);
         }
         System.out.println("You have successfully changed your time!");
-        return String.valueOf(appointments);
+        return (appointments);
     }
 
-    public static String changeDate(ArrayList<Appointment> appointments) throws IOException {
+    public static String changeDate(ArrayList<Appointment> appointments ) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose appointment id : ");

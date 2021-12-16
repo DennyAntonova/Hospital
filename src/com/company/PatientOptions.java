@@ -26,7 +26,7 @@ public class PatientOptions {
                 System.out.println("To change the date press 2: ");
                 int changeDateOrTime = Integer.parseInt(scanner.nextLine());
                 if (changeDateOrTime == 1) {
-                    Patient.changeTime(appointments);
+                    Patient.changeTime(appointments, userId);
                     backToPatientsMenu(userId, name, secondName);
                 }
                 if (changeDateOrTime == 2) {
